@@ -1,7 +1,7 @@
 <template>
-    <div id="app">
+    <div id="home">
     <header>
-        <h1 @click="$router.push('/')">COCACO</h1>
+        <button class="main" @click="$router.push('/')">COCACO</button>
         <button class="login" @click="$router.push('/login')">Log In</button>
         <button class="write" @click="$router.push('/new-post')">글 작성</button>
     </header>
@@ -18,7 +18,6 @@
 
 <script>
 export default {
-
 }
 </script>
 <style>
@@ -35,14 +34,22 @@ header {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-h1 {
+.main {
     position: relative;
     left: 50px;
     -webkit-text-stroke: 1px white;
+    border: none;
+    background: none;
+    font-size: xx-large;
+    color: rgba(239, 201, 236, 0.85);
+    font-weight: 900;
+}
+.main:hover {
+    cursor: pointer;
 }
 .login {
     position: relative;
-    left: 1200px;
+    left: 1170px;
     color: #896681;
     background-color: #FFD1DF;
     border: none;
@@ -60,7 +67,7 @@ h1 {
 }
 .write {
     position: relative;
-    left: 1000px;
+    left: 950px;
     background-color: #FFEDFD;
     color: #65505F;
     border: none;

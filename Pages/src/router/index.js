@@ -12,7 +12,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/newpost',
+      path: '/new-post',
       component: Post
     }
     // {
