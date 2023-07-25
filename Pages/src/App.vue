@@ -2,13 +2,14 @@
   <div id="app">
     <header>
       <h1>COCACO</h1>
-      <button class="login" v-on:click="goToLogin">Log In</button>
-      <button class="write" v-on:click="writeNewPost">글 작성</button>
+      <button class="login" @click="$router.push('/login')">Log In</button>
+      <button class="write" @click="$router.push('/new-post')">글 작성</button>
     </header>
     <body>
       <div class="comment">
         <p>Comment</p>
         <input class="writeComment" type="text">
+        <button class="uploadComment" type="submit">GO</button>
       </div>
     </body>
     <router-view/>
@@ -54,6 +55,10 @@ h1 {
   font-weight: 700;
   text-shadow: rgba(125, 125, 125, 0.3) 2px 2px;
 }
+.login:hover {
+  cursor: pointer;
+  background-color: #e1b8c4;
+}
 .write {
   position: relative;
   left: 1000px;
@@ -67,6 +72,10 @@ h1 {
   font-size: large;
   font-weight: 700;
   text-shadow: rgba(110, 110, 110, 0.3) 2px 2px;
+}
+.write:hover {
+  cursor: pointer;
+  background-color: #e2d0e0;
 }
 .comment {
   position: relative;
@@ -92,14 +101,31 @@ p {
   position: relative;
   left: 10px;
   top: 530px;
-  width: 380px;
+  width: 310px;
   height: 30px;
   border: none;
   border-radius: 10px;
   background-color: white;
 }
+.uploadComment {
+  position: relative;
+  top: 530px;
+  left: 15px;
+  width: 60px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: #E9D7E4;
+  color: #50394B;
+  box-shadow: rgb(128, 128, 128, 0.4) 2px 2px;
+}
+.uploadComment:hover {
+  cursor: pointer;
+  background-color: #c8b8c4;
+}
 body {
   padding-top: 75px;
   background-color: #fff1f7;
+  overflow: hidden;
 }
 </style>
