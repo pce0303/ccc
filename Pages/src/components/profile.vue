@@ -4,18 +4,41 @@
             <img src="https://pbs.twimg.com/media/EbviXFOU4AUv1sP.jpg" width="270px" height="270px">
         </div>
         <button class="upload">사진 업로드</button>
-        <div class="name">이름</div>
-        <div class="namebackground"></div>
+        <input class="name" type=text name="ps" placeholder="이름">
+        <button class="cancel">취소</button>
+        <button class="storage">저장</button>
+        
     </div>
+
 </template>
 
 <style>
+
+    * {
+        background-color: #f9d2eb;
+    }
+    
     #profile {
-        width:700px;
+        /* width:700px;
         height: 400px;
         background-clip: padding-box;
         background-color: #FFD4F0;
         margin: 200px;
+        border-radius: 50px;
+        position:relative;
+        top: 35px;
+        left: 230px; 
+        right: 50px; */
+        width: 700px;
+        height: 400px;
+        background-clip: padding-box;
+        background-color: #ffc2ea;
+        border-radius: 10px;
+        box-shadow: 5px 10px 10px 0px rgba(0, 0, 0, 0.25);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         border-radius: 50px;
     }
 
@@ -29,6 +52,7 @@
         position: relative;
         top: 70px;
         right: -40px;
+        -webkit-text-stroke:2px black;
 
     }
     .upload {
@@ -49,22 +73,97 @@
         right: -85px;
     }
 
+    .upload:hover {
+        background-color: #f6bae1;
+    }
+
     .name {
-        background-color: white;
-        width: 300px;
-        height: 40px;
-        border-radius: 30px;
-        flex-shrink: 0;
-        color: #000;
-        opacity: 0.7;;
+        background-color: #ffffff;
+        opacity: 0.7;
         font-family: Inter;
-        font-size: 20px;
-        font-style: normal;
         font-weight: 700;
-        line-height: normal;
-        position:relative;
-        left: 330px;
-        bottom: 90px; 
+        max-width: 235px;
+        height: 33px;
+        position: relative;
+        bottom: 45px;
+        right: -120px;
+        overflow: hidden;
+        border-radius: 30px;
+        width: 100%;
+        padding: 5px;  
+        border: 1.5px solid lightgrey;
+        outline: none;
+        transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+        box-shadow: 0px 0px 20px -18px;
+    }
+
+    .name:hover {
+        border: 2px solid lightgrey;
+        box-shadow: 0px 0px 20px -17px;
+    }
+
+    .name:active {
+        transform: scale(0.95);
+    }
+
+    .name:focus {
+        border: 2px solid grey;
     }
     
+    .cancel {
+        padding: 15px 35px;
+        border-radius: 50px;
+        border: 0;
+        background-color: white;
+        box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-size: 15px;
+        transition: all .5s ease;
+        position: relative;
+        bottom: -55px;
+        right: 10px;
+    }
+
+    .cancel:hover {
+        letter-spacing: 3px;
+        background-color: #ff80d97a;
+        color:rgb(255, 255, 255);
+        box-shadow: rgb(255, 180, 255) 0px 7px 29px 0px;
+    }
+
+    .cancel:active {
+        letter-spacing: 3px;
+        background-color: #fb4dbe78;
+    }
+
+    .storage {
+        padding: 15px 35px;
+        border-radius: 50px;
+        border: 0;
+        background-color: white;
+        box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-size: 15px;
+        font-family: "Inter";
+        font-weight: 500;
+        transition: all .5s ease;
+        position: relative;
+        bottom: -55px;
+        right: 5px;
+    }
+
+    .storage:hover {
+        letter-spacing: 3px;
+        background-color: #ff80d97a;
+        color:rgb(255, 255, 255);
+        box-shadow: rgb(255, 180, 255) 0px 7px 29px 0px;
+    }
+
+    .storage:active {
+        letter-spacing: 3px;
+        background-color: #fb4dbe78;
+    }
+
 </style>
