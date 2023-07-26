@@ -5,8 +5,8 @@
         </div>
         <button class="upload">사진 업로드</button>
         <input class="name" type=text name="ps" placeholder="이름">
-        <button class="cancel" @click="$router.push('/')">취소</button>
-        <button class="storage" @click="$router.push('/')">저장</button>
+        <button class="cancel" @click="$router.push('/home')">취소</button>
+        <button class="storage" @click="$router.push('/home')">저장</button>
     </div>
 </template>
 

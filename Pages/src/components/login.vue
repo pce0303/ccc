@@ -10,11 +10,10 @@
             <input class="ID" type=text name="id" placeholder="ID">
             <br><br>
             <input class="PS" type=text name="ps" placeholder="PassWord">
-            <button class ="SIGNIN" @click="$router.push('/')">SIGN IN</button>
+            <button class ="SIGNIN" @click="$router.push('/home')">SIGN IN</button>
         </div>
         <router-view></router-view>
     </div>
-
 </template>
 
 <style>

@@ -10,7 +10,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/home',
       component: Home
     },
     {
@@ -18,7 +18,7 @@ export default new Router({
       component: Post
     },
     {
-      path: '/login',
+      path: '/',
       component: login
     },
     {
