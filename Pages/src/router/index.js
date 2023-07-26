@@ -8,7 +8,7 @@ import profile from './../components/profile'
 const routes = [
   {path: '/', component: login},
   {path: '/home', component: Home},
-  {path: '/new-post', component: Post},
+  {path: '/post', component: Post},
   {path: '/profile', component: profile}
 ]
 

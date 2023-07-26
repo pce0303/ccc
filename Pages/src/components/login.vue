@@ -10,12 +10,26 @@
             <input class="ID" type=text name="id" placeholder="ID">
             <br><br>
             <input class="PS" type=text name="ps" placeholder="PassWord">
-            <button class ="SIGNIN" @click="$router.push('/home')">SIGN IN</button>
+            <button class ="SIGNIN" @click="goToHome">SIGN IN</button>
         </div>
         <router-view></router-view>
     </div>
 </template>
+<script>
+import { useRouter } from 'vue-router'
 
+export default {
+  setup () {
+    const router = useRouter
+
+    const goToHome = () => {
+      router.push('/home')
+    }
+
+    return goToHome
+  }
+}
+</script>
 <style>
 /* 예슬컴 */
 @media (max-width: 1920), (max-height: 1080) {

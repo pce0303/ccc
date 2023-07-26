@@ -5,11 +5,26 @@
         </div>
         <button class="upload">사진 업로드</button>
         <input class="name" type=text name="ps" placeholder="이름">
-        <button class="cancel" @click="$router.push('/home')">취소</button>
-        <button class="storage" @click="$router.push('/home')">저장</button>
+        <button class="cancel" @click="goToHome">취소</button>
+        <button class="storage" @click="goToHome">저장</button>
     </div>
 </template>
+<script>
+import { useRouter } from 'vue-router'
 
+export default {
+  setup () {
+    const router = useRouter
+
+    const goToHome = () => {
+      router.push('/home')
+    }
+
+    return goToHome
+  }
+}
+
+</script>
 <style>
 /* 초은컴 */
 @media (max-width: 1440px),(max-height:900px) {

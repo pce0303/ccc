@@ -1,9 +1,9 @@
 <template>
     <div id="home">
     <header>
-        <button class="main" @click="$router.push('/home')">COCACO</button>
-        <button class="login" @click="$router.push('/profile')">Profile</button>
-        <button class="write" @click="$router.push('/new-post')">글 작성</button>
+        <button class="main" @click="goToHome">COCACO</button>
+        <button class="login" @click="goToProfile">Profile</button>
+        <button class="write" @click="goToPost">글 작성</button>
     </header>
     <body>
         <div class="comment">
@@ -17,7 +17,28 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router'
+
 export default {
+  setup () {
+    const router = useRouter()
+
+    const goToHome = () => {
+      router.push('/home')
+    }
+    const goToPost = () => {
+      router.push('/post')
+    }
+    const goToProfile = () => {
+      router.push('/profile')
+    }
+
+    return {
+      goToHome,
+      goToPost,
+      goToProfile
+    }
+  }
 }
 </script>
 
