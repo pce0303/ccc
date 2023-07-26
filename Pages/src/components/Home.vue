@@ -9,7 +9,7 @@
         <div class="comment">
             <p>Comment</p>
             <input class="writeComment" type="text">
-            <button class="uploadComment" type="submit">GO</button>
+            <button class="uploadComment">GO</button>
         </div>
     </body>
     <router-view/>
