@@ -1,6 +1,7 @@
 
 <template>
     <div id="login">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <div class="welcome">Welcome to COCACO!</div>
         <div class="signin">Sign In</div>
         <div class="signinbackground"></div>
@@ -9,13 +10,25 @@
             <br><br>
             <input class="PS" type=text name="ps" placeholder="PassWord">
         </div>
-        <button class ="SIGNIN" @click="$router.push('/')">SIGN IN</button>
+        <button class ="SIGNIN" @click="goToLogin">SIGN IN</button>
         <router-view></router-view>
+        <div class="container"></div>
         <!-- v-on:click="OnClickButton" -->
         <!-- <div v-html="svgContent" class="svg"></div> -->
     </div>
    
 </template>
+
+  <script>
+    export default {
+      methods: {
+        goToLogin() {
+          this.$router.push('/')
+        }
+      }
+    }
+    
+  </script>
 
 <!-- <script>
     export default {
@@ -229,6 +242,14 @@
         margin:auto;
     } */
 
+    .container {
+    /* Set display to flex and flex direction to column for vertical layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center children */
+    align-items: center; /* Horizontally center children */
+    min-height: 100vh; /* Ensure the container takes the full viewport height */
+  }
 
 </style>
 

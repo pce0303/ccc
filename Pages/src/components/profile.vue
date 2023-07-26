@@ -7,7 +7,7 @@
         <input class="name" type=text name="ps" placeholder="이름">
         <button class="cancel">취소</button>
         <button class="storage">저장</button>
-        
+        <div class="bar"></div>
     </div>
 
 </template>
@@ -52,11 +52,11 @@
         position: relative;
         top: 70px;
         right: -40px;
-        -webkit-text-stroke:2px black;
+        /* -webkit-text-stroke:2px black; */
 
     }
     .upload {
-        width: 200px;
+        /* width: 200px;
         height: 45px;
         border-radius: 30px;
         background-clip: padding-box;
@@ -70,11 +70,55 @@
         line-height: 30px;
         position: relative;
         top: -115px;
-        right: -85px;
+        right: -85px; */
+        position:relative;
+        bottom: 140px;
+        right: -317px; 
+        display: inline-block;
+        padding: 12px 28px;
+        font-size: 24px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #fff;
+        background-image: linear-gradient(to bottom right, #ffc2ea, #ff56c4);
+        border: none;
+        border-radius: 40px;
+        box-shadow: 0px 4px 0px #965779;
+        transition: all 0.2s ease-in-out;
     }
 
     .upload:hover {
-        background-color: #f6bae1;
+        transform: translateY(-2px);
+        box-shadow: 0px 5px 0px #965779;
+    }
+
+    .upload:active {
+        transform: translateY(0px);
+        box-shadow: none;
+        background-image: linear-gradient(to bottom right, #ff64e0, #ffc2ea);
+    }
+
+    .upload:before, .SIGNIN:after {
+        content: "";
+        position: absolute;
+        width:0;
+        height:0;
+    }
+
+    .upload:before {
+        top: -3px;
+        left: -3px;
+        border-radius: 40px;
+        border-top: 3px solid #fff;
+        border-left: 3px solid #fff;
+    }
+
+    .upload:after {
+        top: -3px;
+        right: -3px;
+        border-radius: 40px;
+        border-bottom: 3px solid #fff;
+        border-right: 3px solid #fff;
     }
 
     .name {
@@ -85,8 +129,8 @@
         max-width: 235px;
         height: 33px;
         position: relative;
-        bottom: 45px;
-        right: -120px;
+        bottom:60px;
+        left: 130px;
         overflow: hidden;
         border-radius: 30px;
         width: 100%;
@@ -129,7 +173,7 @@
         letter-spacing: 3px;
         background-color: #ff80d97a;
         color:rgb(255, 255, 255);
-        box-shadow: rgb(255, 180, 255) 0px 7px 29px 0px;
+        box-shadow: rgb(166, 155, 166) 0px 7px 29px 0px;
     }
 
     .cancel:active {
@@ -158,7 +202,7 @@
         letter-spacing: 3px;
         background-color: #ff80d97a;
         color:rgb(255, 255, 255);
-        box-shadow: rgb(255, 180, 255) 0px 7px 29px 0px;
+        box-shadow: rgb(166, 155, 166) 0px 7px 29px 0px;
     }
 
     .storage:active {

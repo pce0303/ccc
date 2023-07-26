@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import login from '@/components/login'
 import profile from '@/components/profile'
+import Home from '@/components/Home'
+import post from '@/components/post'
 
 Vue.use(Router)
 
@@ -10,18 +11,19 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      component: Home
     },
     {
       path: '/login',
-      name: 'Login',
       component: login
     },
     {
       path: '/profile',
-      name: 'Profile',
       component: profile
+    },
+    {
+      path: '/new-post',
+      component: post
     }
 
   ]
