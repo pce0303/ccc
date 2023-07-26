@@ -1,15 +1,15 @@
 <template>
     <div id="home">
     <header>
-        <button class="main" @click="$router.push('/')">COCACO</button>
-        <button class="login" @click="$router.push('/login')">Log In</button>
+        <button class="main" @click="$router.push('/home')">COCACO</button>
+        <button class="login" @click="$router.push('/profile')">Profile</button>
         <button class="write" @click="$router.push('/new-post')">글 작성</button>
     </header>
     <body>
         <div class="comment">
             <p>Comment</p>
             <input class="writeComment" type="text">
-            <button class="uploadComment" type="submit">GO</button>
+            <button class="uploadComment">GO</button>
         </div>
     </body>
     <router-view/>
@@ -20,6 +20,7 @@
 export default {
 }
 </script>
+
 <style>
 header {
     position: fixed;

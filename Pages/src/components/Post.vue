@@ -8,8 +8,8 @@
             <textarea class="title" placeholder="제목"></textarea>
         </div>
         <div class="buttons">
-            <button class="cancel" @click="$router.push('/')">취소</button>
-            <button class="upload" @click="$router.push('/')">게시</button>
+            <button class="cancel" @click="$router.push('/home')">취소</button>
+            <button class="upload" @click="$router.push('/home')">게시</button>
         </div>
     </body>
     </div>
