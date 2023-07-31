@@ -8,28 +8,14 @@
             <textarea class="title" placeholder="제목"></textarea>
         </div>
         <div class="buttons">
-            <button class="cancel" @click="goToHome">취소</button>
-            <button class="upload" @click="goToHome">게시</button>
+            <button class="cancel" @click="$router.push('/')">취소</button>
+            <button class="upload" @click="$router.push('/')">게시</button>
         </div>
     </body>
     </div>
 </template>
 
 <script>
-import { useRouter } from 'vue-router'
-
-export default {
-  setup () {
-    const router = useRouter
-
-    const goToHome = () => {
-      router.push('/home')
-    }
-
-    return goToHome
-  }
-}
-
 </script>
 
 <style>
@@ -40,8 +26,8 @@ body {
 }
 .upBar {
     position: absolute;
-    top: 100px;
-    left: 240px;
+    top: 80px;
+    left: 280px;
     width: 1000px;
     height: 70px;
     flex-shrink: 0;
@@ -69,8 +55,8 @@ body {
 }
 .writeBox {
     position: relative;
-    top: 100px;
-    left: 224px;
+    top: 50px;
+    left: 265px;
     width: 1000px;
     height: 550px;
     flex-shrink: 0;
@@ -82,7 +68,7 @@ body {
     width: 950px;
     height: 400px;
     position: absolute;
-    top: 70px;
+    top: 50px;
     left: 15px;
     border: none;
     resize: none;
@@ -98,8 +84,8 @@ body {
 }
 .cancel {
     position: absolute;
-    top: 610px;
-    left: 1050px;
+    bottom: 90px;
+    right: 360px;
     width: 60px;
     height: 30px;
     flex-shrink: 0;
@@ -120,8 +106,8 @@ body {
 }
 .upload {
     position: absolute;
-    top: 610px;
-    left: 1150px;
+    bottom: 90px;
+    right: 290px;
     width: 60px;
     height: 30px;
     flex-shrink: 0;

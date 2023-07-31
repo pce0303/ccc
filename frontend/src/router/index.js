@@ -1,20 +1,30 @@
-import { createWebHistory, createRouter } from 'vue-router'
+import Vue from 'vue'
+import Router from 'vue-router'
+import login from '@/components/login'
+import profile from '@/components/profile'
+import Home from '@/components/Home'
+import post from '@/components/post'
 
-import Home from './../components/Home'
-import login from './../components/login'
-import Post from './../components/Post'
-import profile from './../components/profile'
+Vue.use(Router)
 
-const routes = [
-  {path: '/', component: login},
-  {path: '/home', component: Home},
-  {path: '/post', component: Post},
-  {path: '/profile', component: profile}
-]
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      component: Home
+    },
+    {
+      path: '/login',
+      component: login
+    },
+    {
+      path: '/profile',
+      component: profile
+    },
+    {
+      path: '/new-post',
+      component: post
+    }
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes
+  ]
 })
-
-export default router

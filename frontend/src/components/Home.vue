@@ -1,15 +1,15 @@
 <template>
     <div id="home">
     <header>
-        <button class="main" @click="goToHome">COCACO</button>
-        <button class="login" @click="goToProfile">Profile</button>
-        <button class="write" @click="goToPost">글 작성</button>
+        <button class="main" @click="$router.push('/')">COCACO</button>
+        <button class="login" @click="$router.push('/login')">Log In</button>
+        <button class="write" @click="$router.push('/new-post')">글 작성</button>
     </header>
     <body>
         <div class="comment">
-            <p>Comment</p>
+            <p class="Comment">Comment</p>
             <input class="writeComment" type="text">
-            <button class="uploadComment">GO</button>
+            <button class="uploadComment" type="submit">GO</button>
         </div>
     </body>
     <router-view/>
@@ -17,31 +17,9 @@
 </template>
 
 <script>
-import { useRouter } from 'vue-router'
-
 export default {
-  setup () {
-    const router = useRouter()
-
-    const goToHome = () => {
-      router.push('/home')
-    }
-    const goToPost = () => {
-      router.push('/post')
-    }
-    const goToProfile = () => {
-      router.push('/profile')
-    }
-
-    return {
-      goToHome,
-      goToPost,
-      goToProfile
-    }
-  }
 }
 </script>
-
 <style>
 header {
     position: fixed;
@@ -58,7 +36,7 @@ header {
 }
 .main {
     position: relative;
-    left: 50px;
+    left: 30px;
     -webkit-text-stroke: 1px white;
     border: none;
     background: none;
@@ -71,7 +49,7 @@ header {
 }
 .login {
     position: relative;
-    left: 1170px;
+    right: -1250px;
     color: #896681;
     background-color: #FFD1DF;
     border: none;
@@ -89,7 +67,7 @@ header {
 }
 .write {
     position: relative;
-    left: 950px;
+    left: 1055px;
     background-color: #FFEDFD;
     color: #65505F;
     border: none;
@@ -107,18 +85,20 @@ header {
 }
 .comment {
     position: relative;
-    left: 1000px;
-    bottom: 80px;
+    z-index: 1;
+    left: 1100px;
+    bottom: 150px;
     width: 400px;
     height: 610px;
     background-color: #F8E7EE;
-    border-radius: 10px;
+    border-radius: 10px 10px 10px 10px;
     box-shadow: rgba(129, 129, 129, 0.2) 3px 5px 0 0;
 }
-p {
+.Comment {
     position: relative;
+    /* z-index: 1; */
     left: 20px;
-    top: 20px;
+    top: 65px;
     text-align: left;
     font-size: large;
     font-weight: 600;
@@ -127,7 +107,7 @@ p {
 }
 .writeComment {
     position: relative;
-    left: 10px;
+    left: 0px;
     top: 530px;
     width: 310px;
     height: 30px;
@@ -138,7 +118,7 @@ p {
 .uploadComment {
     position: relative;
     top: 530px;
-    left: 15px;
+    left: 5px;
     width: 60px;
     height: 30px;
     border: none;
