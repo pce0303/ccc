@@ -3,14 +3,27 @@
         <div class="img">
             <img src="https://pbs.twimg.com/media/EbviXFOU4AUv1sP.jpg" width="270px" height="270px">
         </div>
-        <button class="upload">사진 업로드</button>
+        <!-- <button class="upload">사진 업로드</button> -->
+        <v-file-input class="upload" type="file" counter show-size label="사진 업로드"
+              outlined dense multiple prepend-icon="mdi-camera;"
+              @change="onImageChange"/>
         <input class="name" type=text name="ps" placeholder="이름">
-        <button class="cancel">취소</button>
-        <button class="storage">저장</button>
+        <button class="cancel" @click="goToLogin">취소</button>
+        <button class="storage" @click="goToLogin">저장</button>
         <div class="bar"></div>
-    </div>
-
+    </div> 
 </template>
+
+<script>
+    export default {
+      methods: {
+        goToLogin() {
+          this.$router.push('/')
+        }
+      }
+    }
+    
+  </script>
 
 <style>
 
@@ -209,5 +222,11 @@
         letter-spacing: 3px;
         background-color: #fb4dbe78;
     }
+
+    #app {
+        color: #ff56c4;
+
+    }
+
 
 </style>

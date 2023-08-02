@@ -11,6 +11,14 @@
             <button class="cancel" @click="$router.push('/')">취소</button>
             <button class="upload" @click="$router.push('/')">게시</button>
         </div>
+        <button class="heart"></button>
+        <button class="fun"></button>
+        <button class="angry"></button>
+        <button class="cottoncandy">
+            <img src="https://cdn-icons-png.flaticon.com/512/298/298239.png?w=740&t=st=1690985568~exp=1690986168~hmac=b5bf32155d5b96c8688ad4c1d04768d6a26777aafcbcba7bb3f7066f62d5fad2"> 
+        </button>
+        <button class="heart">💖</button>
+
     </body>
     </div>
 </template>
@@ -121,5 +129,27 @@ body {
     font-style: normal;
     font-weight: 500;
     line-height: 30px; /* 187.5% */
+}
+
+/* .cottoncandy {
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 90px;
+    left: 100px;
+    width: 60px;
+    height: 30px;
+    object-fit: fill;
+} */
+
+.heart {
+    background-color: white;
+    border-radius: 50px;
+    font-size: large;
+    position: absolute;
+    bottom: 90px;
+    left: 500px;
+    width: 60px;
+    height: 30px;
 }
 </style>

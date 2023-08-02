@@ -97,8 +97,8 @@ header {
 .Comment {
     position: relative;
     /* z-index: 1; */
-    left: 20px;
-    top: 65px;
+    left: 15px;
+    top: 67px;
     text-align: left;
     font-size: large;
     font-weight: 600;
