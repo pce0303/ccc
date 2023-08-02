@@ -11,20 +11,23 @@
             <button class="cancel" @click="$router.push('/')">취소</button>
             <button class="upload" @click="$router.push('/')">게시</button>
         </div>
-        <button class="heart"></button>
-        <button class="fun"></button>
-        <button class="angry"></button>
-        <button class="cottoncandy">
-            <img src="https://cdn-icons-png.flaticon.com/512/298/298239.png?w=740&t=st=1690985568~exp=1690986168~hmac=b5bf32155d5b96c8688ad4c1d04768d6a26777aafcbcba7bb3f7066f62d5fad2"> 
-        </button>
         <button class="heart">💖</button>
+        <button class="fun">🤣</button>
+        <button class="angry">🤬</button>
+        <button class="sad">😢</button>
+
+        <!-- <button class="cottoncandy">
+            <img src="https://cdn-icons-png.flaticon.com/512/298/298239.png?w=740&t=st=1690985568~exp=1690986168~hmac=b5bf32155d5b96c8688ad4c1d04768d6a26777aafcbcba7bb3f7066f62d5fad2"> 
+        </button> -->
+        
 
     </body>
     </div>
 </template>
 
 <script>
-</script>
+    
+  </script>
 
 <style>
 body {
@@ -143,13 +146,88 @@ body {
 } */
 
 .heart {
-    background-color: white;
-    border-radius: 50px;
-    font-size: large;
+    outline: none;
     position: absolute;
     bottom: 90px;
-    left: 500px;
-    width: 60px;
-    height: 30px;
+    left: 300px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: #ffffff;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
 }
+
+.fun {
+    outline: none;
+    position: absolute;
+    bottom: 90px;
+    left: 360px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: #ffffff;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.sad {
+    outline: none;
+    position: absolute;
+    bottom: 90px;
+    left: 420px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: #ffffff;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.angry {
+    outline: none;
+    position: absolute;
+    bottom: 90px;
+    left: 480px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: #ffffff;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+@keyframes movingBorders {
+  0% {
+    border-color: #fce4e4;
+  }
+
+  50% {
+    border-color: #ffd8d8;
+  }
+
+  90% {
+    border-color: #fce4e4;
+  }
+}
+
+.heart:hover, .fun:hover, .sad:hover,.angry:hover {
+    background-color: #ffffff;
+    transform: scale(120%);
+    animation: movingBorders 2s infinite;
+    
+}
+
 </style>
