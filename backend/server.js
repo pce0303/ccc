@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');  // path 모듈 사용
 
 app.listen(8080, ()=>{
-    console.log('server on');
+    console.log('server on port 8080');
 })
 
 app.use( '/', express.static( path.join(__dirname, '../frontend/dist') ));  
