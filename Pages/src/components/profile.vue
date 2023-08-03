@@ -84,13 +84,6 @@
         background-image: linear-gradient(to bottom right, #ff64e0, #ffc2ea);
     }
 
-    .upload:before, .SIGNIN:after {
-        content: "";
-        position: absolute;
-        width:0;
-        height:0;
-    }
-
     .upload:before {
         top: -3px;
         left: -3px;

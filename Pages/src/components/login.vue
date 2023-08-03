@@ -30,14 +30,13 @@
 
 <style>
     * {
-        background-color: #f9c3e6;
+        background-color: #F9D2EB;
     }
     #login {
         overflow: hidden;
         width:800px;
         height: 400px;
         background-color: #FFD4F0;
-        /* margin: 200px; */
         border-radius: 10px;
         position: relative;
         top: 115px;
