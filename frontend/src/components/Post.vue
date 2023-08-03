@@ -2,14 +2,14 @@
     <div id="post">
     <body>
         <div class="writeBox">
-            <textarea class="value" placeholder="내용을 입력하세요"></textarea>
+            <textarea class="PostValue" placeholder="내용을 입력하세요"></textarea>
         </div>
         <div class="upBar">
-            <textarea class="title" placeholder="제목"></textarea>
+            <textarea class="PostTitle" placeholder="제목"></textarea>
         </div>
         <div class="buttons">
-            <button class="cancel" @click="$router.push('/')">취소</button>
-            <button class="upload" @click="$router.push('/')">게시</button>
+            <button class="cancelPost" @click="$router.push('/dashboard')">취소</button>
+            <button class="uploadPost" @click="$router.push('/dashboard')">게시</button>
         </div>
     </body>
     </div>
@@ -34,7 +34,7 @@ body {
     border-radius: 20px 20px 0px 0px;
     background: #F3DFE9;
 }
-.title {
+.PostTitle {
     position: absolute;
     top: 20px;
     left: 10px;
@@ -50,7 +50,7 @@ body {
     font-weight: 600;
     line-height: 30px; /* 125% */
 }
-.title:focus {
+.PostTitle:focus {
     outline: none;
 }
 .writeBox {
@@ -64,7 +64,7 @@ body {
     background-color: #ffffff;
     box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
 }
-.value {
+.PostValue {
     width: 950px;
     height: 400px;
     position: absolute;
@@ -79,10 +79,10 @@ body {
     font-weight: 400;
     line-height: normal;
 }
-.value:focus {
+.PostValue:focus {
     outline: none;
 }
-.cancel {
+.cancelPost {
     position: absolute;
     bottom: 90px;
     right: 360px;
@@ -100,11 +100,11 @@ body {
     font-weight: 500;
     line-height: 30px; /* 187.5% */
 }
-.cancel:hover, .upload:hover {
+.cancelPost:hover, .upload:hover {
     cursor: pointer;
     background-color: #d5c4d0;
 }
-.upload {
+.uploadPost {
     position: absolute;
     bottom: 90px;
     right: 290px;
