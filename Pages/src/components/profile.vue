@@ -4,9 +4,8 @@
             <img src="https://pbs.twimg.com/media/EbviXFOU4AUv1sP.jpg" width="270px" height="270px">
         </div>
         <!-- <button class="upload">사진 업로드</button> -->
-        <v-file-input class="upload" type="file" counter show-size label="사진 업로드"
-              outlined dense multiple prepend-icon="mdi-camera;"
-              @change="onImageChange"/>
+            <input class="upload" type="file" placeholder="사진 업로드">
+        
         <input class="name" type=text name="ps" placeholder="이름">
         <button class="cancel" @click="goToLogin">취소</button>
         <button class="storage" @click="goToLogin">저장</button>
@@ -32,16 +31,6 @@
     }
     
     #profile {
-        /* width:700px;
-        height: 400px;
-        background-clip: padding-box;
-        background-color: #FFD4F0;
-        margin: 200px;
-        border-radius: 50px;
-        position:relative;
-        top: 35px;
-        left: 230px; 
-        right: 50px; */
         width: 700px;
         height: 400px;
         background-clip: padding-box;
@@ -65,31 +54,15 @@
         position: relative;
         top: 70px;
         right: -40px;
-        /* -webkit-text-stroke:2px black; */
-
     }
+
     .upload {
-        /* width: 200px;
-        height: 45px;
-        border-radius: 30px;
-        background-clip: padding-box;
-        background: rgb(224, 224, 224);
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        color: black;
-        flex-shrink: 0;
-        font-family: Inter;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 30px;
-        position: relative;
-        top: -115px;
-        right: -85px; */
         position:relative;
         bottom: 140px;
-        right: -317px; 
+        right: -37px; 
         display: inline-block;
         padding: 12px 28px;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
         text-transform: uppercase;
         color: #fff;
@@ -142,8 +115,8 @@
         max-width: 235px;
         height: 33px;
         position: relative;
-        bottom:60px;
-        left: 130px;
+        bottom:100px;
+        left: 200px;
         overflow: hidden;
         border-radius: 30px;
         width: 100%;
@@ -178,8 +151,8 @@
         font-size: 15px;
         transition: all .5s ease;
         position: relative;
-        bottom: -55px;
-        right: 10px;
+        bottom: 0px;
+        right:-90px;
     }
 
     .cancel:hover {
@@ -207,8 +180,8 @@
         font-weight: 500;
         transition: all .5s ease;
         position: relative;
-        bottom: -55px;
-        right: 5px;
+        bottom: 0px;
+        right: -95px;
     }
 
     .storage:hover {
@@ -223,10 +196,6 @@
         background-color: #fb4dbe78;
     }
 
-    #app {
-        color: #ff56c4;
-
-    }
 
 
 </style>
