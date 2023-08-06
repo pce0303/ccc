@@ -1,9 +1,9 @@
 // 게시물 작성
 app.post('/new-post', async (req, res) => {
-    const { title, detail, writer } = req.body;
+    const { title, detail, author } = req.body;
     const [result] = await post.query(
-        'INSERT INTO post_table (title, detail, writer) VALUES (?, ?, ?)',
-        [title, detail, writer]
+        'INSERT INTO post_table (title, detail, author) VALUES (?, ?, ?)',
+        [title, detail, author]
     );
     res.status(201).json({ id: result.insertId });
 });
