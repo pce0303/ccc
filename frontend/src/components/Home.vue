@@ -8,7 +8,7 @@
     <body>
         <div class="comment">
             <p class="CommentTitle">Comment</p>
-            <input class="writeComment" type="text">
+            <input class="writeComment" type="text" placeholder="댓글을 입력하세요">
             <button class="uploadComment" type="submit">GO</button>
         </div>
     </body>
@@ -84,20 +84,21 @@ header {
     background-color: #e2d0e0;
 }
 .comment {
-    position: relative;
-    left: 1100px;
-    bottom: 150px;
-    width: 400px;
-    height: 610px;
+    position: absolute;
+    left: 1070px;
+    top: 100px;
+    width: 350px;
+    height: 590px;
     background-color: #F8E7EE;
     border-radius: 10px 10px 10px 10px;
     box-shadow: rgba(129, 129, 129, 0.2) 3px 5px 0 0;
 }
 .CommentTitle {
     position: relative;
-    /* z-index: 1; */
     left: 20px;
-    top: 65px;
+    top: 0px;
+    width: 60px;
+    background-color: #F8E7EE;
     text-align: left;
     font-size: large;
     font-weight: 600;
@@ -106,18 +107,21 @@ header {
 }
 .writeComment {
     position: relative;
-    left: 0px;
-    top: 530px;
-    width: 310px;
+    left: 10px;
+    top: 480px;
+    width: 330px;
     height: 30px;
     border: none;
     border-radius: 10px;
     background-color: white;
 }
+.writeComment:focus {
+    outline: none;
+}
 .uploadComment {
     position: relative;
-    top: 530px;
-    left: 5px;
+    top: 480px;
+    left: 25px;
     width: 60px;
     height: 30px;
     border: none;
