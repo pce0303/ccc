@@ -11,31 +11,27 @@
             <button class="cancel" @click="$router.push('/Home')">취소</button>
             <button class="upload" @click="$router.push('/Home')">게시</button>
         </div>
-        <div id="app">
-            <button class="heart" @click="EmotionHighlight" :class="{'heart': isHighlighted }">💖</button>
-            <button class="fun">🤣</button>
-            <button class="angry">🤬</button>
-            <button class="sad">😢</button>
+        <div id="emotion">
+            <button class="heart" @click="EmotionHighlight" :class="{'highlight': isHighlighted }">💖</button>
+            <button class="fun" @click="EmotionHighlight" :class="{'highlight': isHighlighted }">🤣</button>
+            <button class="angry" @click="EmotionHighlight" :class="{'highlight': isHighlighted }">🤬</button>
+            <button class="sad" @click="EmotionHighlight" :class="{'highlight': isHighlighted }">😢</button>
+            
         </div>
-
-        <!-- <button class="cottoncandy">
-            <img src="https://cdn-icons-png.flaticon.com/512/298/298239.png?w=740&t=st=1690985568~exp=1690986168~hmac=b5bf32155d5b96c8688ad4c1d04768d6a26777aafcbcba7bb3f7066f62d5fad2"> 
-        </button> -->
-        
-
     </body>
     </div>
 </template>
 
 <script>
     export default ({
-      el: '#app',
-      data: {
-        isHighlighted: false, // 강조 상태를 저장하는 데이터
+      data() {
+        return {
+          isHighlighted: false, // CSS 변경 상태를 저장하는 데이터
+        };
       },
       methods: {
         EmotionHighlight() {
-          // 강조 상태를 토글 (true -> false, false -> true)
+          // CSS 변경 상태를 토글 (true -> false, false -> true)
           this.isHighlighted = !this.isHighlighted;
         }
       }
@@ -151,8 +147,8 @@ body {
     outline: none;
     position: absolute;
     bottom: 90px;
-    left: 300px;
-    padding: 7.5px 1px;
+    left: 298px;
+    padding: 10px 2px;
     border: none;
     border-radius: 50%;
     background: #ffffff;
@@ -164,12 +160,16 @@ body {
     border: 2px solid rgb(255, 255, 255);
 }
 
+.heart.highlight:hover {
+  background-color: rgb(255, 155, 205);
+}
+
 .fun {
     outline: none;
     position: absolute;
     bottom: 90px;
     left: 365px;
-    padding: 7.5px 1px;
+    padding: 10px 2px;
     border: none;
     border-radius: 50%;
     background: #ffffff;
@@ -178,6 +178,10 @@ body {
     font-weight: 500;
     line-height: 30px;
     border: 2px solid rgb(255, 255, 255);
+}
+
+.fun.highlight:hover {
+  background-color: rgb(244, 244, 53);
 }
 
 .sad {
@@ -196,6 +200,10 @@ body {
     border: 2px solid rgb(255, 255, 255);
 }
 
+.sad.highlight:hover {
+  background-color: rgb(244, 244, 53);
+}
+
 .angry {
     outline: none;
     position: absolute;
@@ -212,46 +220,18 @@ body {
     border: 2px solid rgb(255, 255, 255);
 }
 
-@keyframes movingBorders1 {
-  0% {
-    background-color: #F9D2EB;
-  }
-
-  50% {
-    background-color: #F9D2EB;
-  }
-
-  90% {
-    background-color: #F9D2EB;
-  }
+.angry.highlight:hover {
+  background-color: rgb(255, 155, 205);
 }
 
 .heart:hover,.angry:hover {
-    background-color: #ffffff;
+    background-color: #ffc9df;
     transform: scale(120%);
-    animation: movingBorders1 5s infinite;
-    
-}
-
-@keyframes movingBorders2 {
-  0% {
-    background-color: lightyellow;
-  }
-
-  50% {
-    background-color: lightyellow;
-  }
-
-  90% {
-    background-color: lightyellow;
-  }
 }
 
 .fun:hover, .sad:hover {
-    background-color: #ffffff;
+    background-color: rgb(248, 248, 151);
     transform: scale(120%);
-    animation: movingBorders2 5s infinite;
-    
 }
 
 </style>

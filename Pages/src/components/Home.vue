@@ -2,7 +2,7 @@
     <div id="home">
     <header>
         <button class="main" @click="$router.push('/Home')">COCACO</button>
-        <button class="login" @click="$router.push('/')">Log In</button>
+        <button class="username" @click="$router.push('/profile')">User Name</button>
         <button class="write" @click="$router.push('/new-post')">글 작성</button>
     </header>
     <body>
@@ -15,6 +15,10 @@
     <router-view/>
     </div>
 </template>
+
+<script>
+
+</script>
 
 <style>
 header {
@@ -43,7 +47,7 @@ header {
 .main:hover {
     cursor: pointer;
 }
-.login {
+.username {
     position: relative;
     right: -1250px;
     color: #896681;
@@ -57,7 +61,7 @@ header {
     font-weight: 700;
     text-shadow: rgba(125, 125, 125, 0.3) 2px 2px;
 }
-.login:hover {
+.username:hover {
     cursor: pointer;
     background-color: #e1b8c4;
 }
