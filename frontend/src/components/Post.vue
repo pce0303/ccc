@@ -1,23 +1,50 @@
 <template>
     <div id="post">
     <body>
-        <form action="/new-post" method="post">
-            <div class="writeBox">
-                <textarea class="PostValue" placeholder="내용을 입력하세요"></textarea>
-            </div>
-            <div class="upBar">
-                <textarea class="PostTitle" placeholder="제목"></textarea>
-            </div>
-            <div class="buttons">
-                <button class="cancelPost" @click="$router.push('/dashboard')">취소</button>
-                <button class="uploadPost" type="submit">게시</button>
-            </div>
-        </form>
+        <div class="writeBox">
+            <textarea class="PostValue" placeholder="내용을 입력하세요"></textarea>
+        </div>
+        <div class="upBar">
+            <textarea class="PostTitle" placeholder="제목"></textarea>
+        </div>
+        <div class="buttons">
+            <button class="cancelPost" @click="$router.push('/dashboard')">취소</button>
+            <button class="uploadPost" @click="sendData">게시</button>
+        </div>
     </body>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
+
+export default {
+
+  data () {
+    return {
+      PostValue: '',
+      PostTitle: ''
+    }
+  },
+
+  methods: {
+    sendData () {
+      // POST 요청 보내기
+      axios
+        .post('/new-post', {
+          title: this.PostTitle,
+          detail: this.PostValue
+        })
+        .then((response) => {
+          console.log(response.data)
+        })
+        .catch((error) => {
+          console.error('Error:', error.message)
+        })
+    }
+  }
+}
+
 </script>
 
 <style>
@@ -103,7 +130,7 @@ body {
     font-weight: 500;
     line-height: 30px; /* 187.5% */
 }
-.cancelPost:hover, .upload:hover {
+.cancelPost:hover, .uploadPost:hover {
     cursor: pointer;
     background-color: #d5c4d0;
 }
