@@ -1,38 +1,36 @@
 
 <template>
-    <div id="login">
+    <div id="Login">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <div class="welcome">Welcome to COCACO!</div>
-        <div class="signin">Sign In</div>
-        <div class="signinbackground"></div>
+        <div class="welcome">Welcome to<br>COCACO!</div>
+        <div class="signIn">Sign In</div>
+        <div class="signInBackground"></div>
         <div>
             <input class="ID" type=text name="id" placeholder="ID">
             <br><br>
             <input class="PS" type=text name="ps" placeholder="PassWord">
         </div>
-        <button class ="SIGNIN" @click="goToLogin">SIGN IN</button>
+        <button class ="signInButton" @click="goToHome">SIGN IN</button>
         <router-view></router-view>
         <div class="container"></div>
     </div>
-   
 </template>
 
-  <script>
-    export default {
-      methods: {
-        goToLogin() {
-          this.$router.push('/Home')
-        }
-      }
+<script>
+export default {
+  methods: {
+    goToHome () {
+      this.$router.push('/Home')
     }
-    
-  </script>
+  }
+}
 
+</script>
 <style>
-    * {
-        background-color: #F9D2EB;
+     * {
+        background-color: #f9c3e6;
     }
-    #login {
+    #Login {
         overflow: hidden;
         width:800px;
         height: 400px;
@@ -40,10 +38,9 @@
         border-radius: 10px;
         position: relative;
         top: 115px;
-        left: 370px; 
+        left: 370px;
         right: 50px;
         filter: drop-shadow(10px 15px 10px rgba(0, 0, 0, 0.25));
-
     }
 
     .welcome {
@@ -61,10 +58,8 @@
         position: relative;
         top: 135px;
         right: 50px;
-    } 
-
-    
-    .signin {
+    }
+    .signIn {
         width: 241px;
         height: 47px;
         flex-shrink: 0;
@@ -81,7 +76,7 @@
         bottom: 20px;
     }
 
-    .signinbackground {
+    .signInBackground {
         background-color: white;
         width: 500px;
         height: 400px;
@@ -90,7 +85,7 @@
         left: 400px;
 
     }
-    
+
     input {
         background-color: #D9D9D9;
         opacity: 0.7;
@@ -100,11 +95,11 @@
         height: 30px;
         position: relative;
         bottom: 390px;
-        left: 203px;
+        left: 200px;
         overflow: hidden;
         border-radius: 10px;
         width: 100%;
-        padding: 5px;   
+        padding: 5px;
         border-radius: 12px;
         border: 1.5px solid lightgrey;
         outline: none;
@@ -125,10 +120,10 @@
         border: 2px solid grey;
     }
 
-    .SIGNIN {
+    .signInButton {
         position:relative;
         bottom: 370px;
-        right: -209px; 
+        left: 200px;
         display: inline-block;
         padding: 12px 28px;
         margin: 10px;
@@ -143,25 +138,25 @@
         transition: all 0.2s ease-in-out;
     }
 
-    .SIGNIN:hover {
+    .signInButton:hover {
         transform: translateY(-2px);
         box-shadow: 0px 5px 0px #965779;
     }
 
-    .SIGNIN:active {
+    .signInButton:active {
         transform: translateY(0px);
         box-shadow: none;
         background-image: linear-gradient(to bottom right, #ff64e0, #ffc2ea);
     }
 
-    .SIGNIN:before, .SIGNIN:after {
+    .signInButton:before, .signInButton:after {
         content: "";
         position: absolute;
         width:0;
         height:0;
     }
 
-    .SIGNIN:before {
+    .signInButton:before {
         top: -3px;
         left: -3px;
         border-radius: 40px;
@@ -169,7 +164,7 @@
         border-left: 3px solid #fff;
     }
 
-    .SIGNIN:after {
+    .signInButton:after {
         top: -3px;
         right: -3px;
         border-radius: 40px;
@@ -178,13 +173,12 @@
     }
 
     .container {
+    /* Set display to flex and flex direction to column for vertical layout */
     display: flex;
     flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    min-height: 100vh; 
-  }
+    justify-content: center; /* Vertically center children */
+    align-items: center; /* Horizontally center children */
+    min-height: 100vh; /* Ensure the container takes the full viewport height */
+    }
 
 </style>
-
-

@@ -21,7 +21,7 @@
     export default {
       methods: {
         goToLogin() {
-          this.$router.push('/')
+          this.$router.push('/Home')
         }
       }
     }

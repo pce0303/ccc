@@ -8,14 +8,14 @@
             <textarea class="title" placeholder="제목"></textarea>
         </div>
         <div class="buttons">
-            <button class="cancel" @click="$router.push('/Home')">취소</button>
-            <button class="upload" @click="$router.push('/Home')">게시</button>
+            <button class="cancelPost" @click="$router.push('/Home')">취소</button>
+            <button class="uploadPost" @click="$router.push('/Home')">게시</button>
         </div>
         <div id="emotion">
-            <button class="heart" @click="EmotionHighlight" :class="{'highlight': isHighlighted }">💖</button>
-            <button class="fun" @click="EmotionHighlight" :class="{'highlight': isHighlighted }">🤣</button>
-            <button class="angry" @click="EmotionHighlight" :class="{'highlight': isHighlighted }">🤬</button>
-            <button class="sad" @click="EmotionHighlight" :class="{'highlight': isHighlighted }">😢</button>
+            <button class="heart" @click="HeartHighlight" :class="{'highlight': isHighlighted1 }">💖</button>
+            <button class="fun" @click="FunHighlight" :class="{'highlight': isHighlighted2 }">🤣</button>
+            <button class="angry" @click="SadHighlight" :class="{'highlight': isHighlighted3 }">🤬</button>
+            <button class="sad" @click="AngryHighlight" :class="{'highlight': isHighlighted4 }">😢</button>
             
         </div>
     </body>
@@ -26,28 +26,39 @@
     export default ({
       data() {
         return {
-          isHighlighted: false, // CSS 변경 상태를 저장하는 데이터
+          isHighlighted1: false, // CSS 변경 상태를 저장하는 데이터
+          isHighlighted2: false,
+          isHighlighted3: false,
+          isHighlighted4: false
         };
       },
       methods: {
-        EmotionHighlight() {
+        HeartHighlight() {
           // CSS 변경 상태를 토글 (true -> false, false -> true)
-          this.isHighlighted = !this.isHighlighted;
+          this.isHighlighted1 = !this.isHighlighted1;
+        },
+        FunHighlight() {
+          // CSS 변경 상태를 토글 (true -> false, false -> true)
+          this.isHighlighted2 = !this.isHighlighted2;
+        },
+        SadHighlight() {
+          // CSS 변경 상태를 토글 (true -> false, false -> true)
+          this.isHighlighted3 = !this.isHighlighted3;
+        },
+        AngryHighlight() {
+          // CSS 변경 상태를 토글 (true -> false, false -> true)
+          this.isHighlighted4 = !this.isHighlighted4;
         }
       }
     });
 </script>
 
 <style>
-body {
-    display: inline-flex;
-    align-items: center;
-    background: #FFECF4;
-}
+
 .upBar {
     position: absolute;
     top: 80px;
-    left: 280px;
+    left: 300px;
     width: 1000px;
     height: 70px;
     flex-shrink: 0;
@@ -74,9 +85,9 @@ body {
     outline: none;
 }
 .writeBox {
-    position: relative;
-    top: 50px;
-    left: 265px;
+    position: absolute;
+    top: 100px;
+    left: 300px;
     width: 1000px;
     height: 550px;
     flex-shrink: 0;
@@ -88,10 +99,11 @@ body {
     width: 950px;
     height: 400px;
     position: absolute;
-    top: 50px;
+    top: 80px;
     left: 15px;
     border: none;
     resize: none;
+    background-color: white;
     color: #000;
     font-family: Inter;
     font-size: 16px;
@@ -102,42 +114,46 @@ body {
 .value:focus {
     outline: none;
 }
-.cancel {
+.cancelPost {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    bottom: 90px;
-    right: 360px;
-    width: 60px;
+    bottom: 105px;
+    right: 340px;
     height: 30px;
-    flex-shrink: 0;
+    width:60px;
     border: none;
     border-radius: 30px;
     background: #E9D7E4;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     color: #50394B;
     font-family: Inter;
-    font-size: 16px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: 30px; /* 187.5% */
 }
-.cancel:hover, .upload:hover {
+.cancelPost:hover, .uploadPost:hover {
     cursor: pointer;
     background-color: #d5c4d0;
 }
-.upload {
+.uploadPost {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    bottom: 90px;
-    right: 290px;
-    width: 60px;
+    bottom: 105px;
+    right: 270px;
     height: 30px;
-    flex-shrink: 0;
+    width: 60px;
     border: none;
     border-radius: 30px;
     background: #E9D7E4;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     color: #50394B;
     font-family: Inter;
-    font-size: 16px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: 30px; /* 187.5% */
@@ -146,8 +162,8 @@ body {
 .heart {
     outline: none;
     position: absolute;
-    bottom: 90px;
-    left: 298px;
+    bottom: 100px;
+    left: 308px;
     padding: 10px 2px;
     border: none;
     border-radius: 50%;
@@ -157,18 +173,26 @@ body {
     text-align: center;
     font-weight: 500;
     line-height: 30px;
-    border: 2px solid rgb(255, 255, 255);
+}
+
+.heart.highlight {
+  width: 75px;
+  height: 75px;
+  left: 308px;
+  font-size: 50px;
+  background-color: #ffc9df;
 }
 
 .heart.highlight:hover {
-  background-color: rgb(255, 155, 205);
+    background-color: rgb(255, 175, 215);
 }
+
 
 .fun {
     outline: none;
     position: absolute;
-    bottom: 90px;
-    left: 365px;
+    bottom: 100px;
+    left: 390px;
     padding: 10px 2px;
     border: none;
     border-radius: 50%;
@@ -177,7 +201,14 @@ body {
     font-style: normal;
     font-weight: 500;
     line-height: 30px;
-    border: 2px solid rgb(255, 255, 255);
+}
+
+.fun.highlight {
+  width: 75px;
+  height: 75px;
+  left: 390px;
+  font-size: 50px;
+  background-color: rgb(249, 249, 145);
 }
 
 .fun.highlight:hover {
@@ -187,8 +218,8 @@ body {
 .sad {
     outline: none;
     position: absolute;
-    bottom: 90px;
-    left: 430px;
+    bottom: 100px;
+    left: 473px;
     padding: 10px 2px;
     border: none;
     border-radius: 50%;
@@ -197,7 +228,14 @@ body {
     font-style: normal;
     font-weight: 500;
     line-height: 30px;
-    border: 2px solid rgb(255, 255, 255);
+}
+
+.sad.highlight {
+  width: 75px;
+  height: 75px;
+  left: 473px;
+  font-size: 50px;
+  background-color: rgb(249, 249, 145);
 }
 
 .sad.highlight:hover {
@@ -207,8 +245,8 @@ body {
 .angry {
     outline: none;
     position: absolute;
-    bottom: 90px;
-    left: 497px;
+    bottom: 100px;
+    left: 560px;
     padding: 10px 2px;
     border: none;
     border-radius: 50%;
@@ -217,11 +255,18 @@ body {
     font-style: normal;
     font-weight: 500;
     line-height: 30px;
-    border: 2px solid rgb(255, 255, 255);
+}
+
+.angry.highlight {
+  width: 75px;
+  height: 75px;
+  left: 560px;
+  font-size: 50px;
+  background-color: #ffc9df;
 }
 
 .angry.highlight:hover {
-  background-color: rgb(255, 155, 205);
+    background-color: rgb(255, 175, 215);
 }
 
 .heart:hover,.angry:hover {

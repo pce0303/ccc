@@ -1,13 +1,13 @@
 <template>
     <div id="home">
     <header>
-        <button class="main" @click="$router.push('/Home')">COCACO</button>
+        <button class="main" @click="$router.push('/')">COCACO</button>
         <button class="username" @click="$router.push('/profile')">User Name</button>
         <button class="write" @click="$router.push('/new-post')">글 작성</button>
     </header>
     <body>
         <div class="comment">
-            <p class="Comment">Comment</p>
+            <p class="commentTitle">Comment</p>
             <input class="writeComment" type="text">
             <button class="uploadComment" type="submit">GO</button>
         </div>
@@ -49,12 +49,12 @@ header {
 }
 .username {
     position: relative;
-    right: -1250px;
+    left: 1250px;
     color: #896681;
     background-color: #FFD1DF;
     border: none;
     border-radius: 10px;
-    width: 90px;
+    width: 100px;
     height: 40px;
     box-shadow: rgb(81, 81, 81, 0.3) 2px 3px;
     font-size: large;
@@ -67,7 +67,7 @@ header {
 }
 .write {
     position: relative;
-    left: 1055px;
+    left: 1050px;
     background-color: #FFEDFD;
     color: #65505F;
     border: none;
@@ -84,21 +84,21 @@ header {
     background-color: #e2d0e0;
 }
 .comment {
-    position: relative;
-    z-index: 1;
-    left: 1100px;
-    bottom: 150px;
-    width: 400px;
-    height: 610px;
+    position: absolute;
+    left: 1150px;
+    top: 110px;
+    width: 350px;
+    height: 590px;
     background-color: #F8E7EE;
     border-radius: 10px 10px 10px 10px;
     box-shadow: rgba(129, 129, 129, 0.2) 3px 5px 0 0;
 }
-.Comment {
+.commentTitle {
     position: relative;
-    /* z-index: 1; */
-    left: 15px;
-    top: 67px;
+    left: 20px;
+    top: 0px;
+    width: 60px;
+    background-color: #F8E7EE;
     text-align: left;
     font-size: large;
     font-weight: 600;
@@ -108,17 +108,20 @@ header {
 .writeComment {
     position: relative;
     left: 0px;
-    top: 530px;
-    width: 310px;
+    top: 480px;
+    width: 330px;
     height: 30px;
     border: none;
     border-radius: 10px;
     background-color: white;
 }
+.writeComment:focus {
+    outline: none;
+}
 .uploadComment {
     position: relative;
-    top: 530px;
-    left: 5px;
+    top: 480px;
+    left: 10px;
     width: 60px;
     height: 30px;
     border: none;
@@ -131,9 +134,5 @@ header {
     cursor: pointer;
     background-color: #c8b8c4;
 }
-body {
-    padding-top: 75px;
-    background-color: #fff1f7;
-    overflow: hidden;
-}
+
 </style>
