@@ -1,7 +1,7 @@
 <template>
     <div id="home">
     <header>
-        <button class="main" @click="$router.push('/dashboard')">COCACO</button>
+        <button class="main" @click="$router.push('/')">COCACO</button>
         <button class="username" @click="$router.push('/profile')">username</button>
         <button class="write" @click="$router.push('/new-post')">글 작성</button>
     </header>

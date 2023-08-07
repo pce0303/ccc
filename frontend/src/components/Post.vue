@@ -1,16 +1,18 @@
 <template>
     <div id="post">
     <body>
-        <div class="writeBox">
-            <textarea class="PostValue" placeholder="내용을 입력하세요"></textarea>
-        </div>
-        <div class="upBar">
-            <textarea class="PostTitle" placeholder="제목"></textarea>
-        </div>
-        <div class="buttons">
-            <button class="cancelPost" @click="$router.push('/dashboard')">취소</button>
-            <button class="uploadPost" @click="$router.push('/dashboard')">게시</button>
-        </div>
+        <form action="/new-post" method="post">
+            <div class="writeBox">
+                <textarea class="PostValue" placeholder="내용을 입력하세요"></textarea>
+            </div>
+            <div class="upBar">
+                <textarea class="PostTitle" placeholder="제목"></textarea>
+            </div>
+            <div class="buttons">
+                <button class="cancelPost" @click="$router.push('/dashboard')">취소</button>
+                <button class="uploadPost" type="submit">게시</button>
+            </div>
+        </form>
     </body>
     </div>
 </template>
