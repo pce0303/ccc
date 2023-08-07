@@ -25,7 +25,7 @@ app.post('/new-post', (req, res) => {
 
     connection.query('INSERT INTO post_table (title, detail) VALUES (?, ?)', [title, detail], (error, result) => {
         if (error) {
-          throw error;
+            throw error;
         }
         res.status(201).json({ id: result.insertId });
     
