@@ -1,17 +1,30 @@
 <template>
     <div id="profile">
         <div class="img">
-            <img src="https://pbs.twimg.com/media/EbviXFOU4AUv1sP.jpg" width="270px" height="270px">
+            <!-- <img src="https://pbs.twimg.com/media/EbviXFOU4AUv1sP.jpg" width="270px" height="270px"> -->
+            <form action="upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="profile" accept="image/*">
+                <input type="submit">
+            </form>
         </div>
-        <button class="upload">사진 업로드</button>
+        <!-- <button class="uploadProfileImg">사진 업로드</button> -->
+        <input class="upload" type="file" placeholder="사진 업로드">
         <input class="name" type=text name="ps" placeholder="이름">
-        <button class="cancel">취소</button>
-        <button class="storage">저장</button>
+        <button class="cancelProfile" @click="goToHome">취소</button>
+        <button class="storage" @click="goToHome">저장</button>
         <div class="bar"></div>
     </div>
 
 </template>
-
+<script>
+export default {
+  methods: {
+    goToHome () {
+      this.$router.push('/dashboard')
+    }
+  }
+}
+</script>
 <style>
 
     * {
@@ -55,28 +68,13 @@
         /* -webkit-text-stroke:2px black; */
 
     }
-    .upload {
-        /* width: 200px;
-        height: 45px;
-        border-radius: 30px;
-        background-clip: padding-box;
-        background: rgb(224, 224, 224);
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        color: black;
-        flex-shrink: 0;
-        font-family: Inter;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 30px;
-        position: relative;
-        top: -115px;
-        right: -85px; */
+    .uploadProfileImg {
         position:relative;
         bottom: 140px;
-        right: -317px;
+        left: 350px;
         display: inline-block;
         padding: 12px 28px;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
         text-transform: uppercase;
         color: #fff;
@@ -87,25 +85,18 @@
         transition: all 0.2s ease-in-out;
     }
 
-    .upload:hover {
+    .uploadProfileImg:hover {
         transform: translateY(-2px);
         box-shadow: 0px 5px 0px #965779;
     }
 
-    .upload:active {
+    .uploadProfileImg:active {
         transform: translateY(0px);
         box-shadow: none;
         background-image: linear-gradient(to bottom right, #ff64e0, #ffc2ea);
     }
 
-    .upload:before, .SIGNIN:after {
-        content: "";
-        position: absolute;
-        width:0;
-        height:0;
-    }
-
-    .upload:before {
+    .uploadProfileImg:before {
         top: -3px;
         left: -3px;
         border-radius: 40px;
@@ -113,7 +104,7 @@
         border-left: 3px solid #fff;
     }
 
-    .upload:after {
+    .uploadProfileImg:after {
         top: -3px;
         right: -3px;
         border-radius: 40px;
@@ -130,7 +121,7 @@
         height: 33px;
         position: relative;
         bottom:60px;
-        left: 130px;
+        left: 200px;
         overflow: hidden;
         border-radius: 30px;
         width: 100%;
@@ -154,7 +145,7 @@
         border: 2px solid grey;
     }
 
-    .cancel {
+    .cancelProfile {
         padding: 15px 35px;
         border-radius: 50px;
         border: 0;
@@ -169,14 +160,14 @@
         right: 10px;
     }
 
-    .cancel:hover {
+    .cancelProfile:hover {
         letter-spacing: 3px;
         background-color: #ff80d97a;
         color:rgb(255, 255, 255);
         box-shadow: rgb(166, 155, 166) 0px 7px 29px 0px;
     }
 
-    .cancel:active {
+    .cancelProfile:active {
         letter-spacing: 3px;
         background-color: #fb4dbe78;
     }

@@ -2,13 +2,13 @@
     <div id="home">
     <header>
         <button class="main" @click="$router.push('/')">COCACO</button>
-        <button class="login" @click="$router.push('/login')">Log In</button>
+        <button class="username" @click="$router.push('/profile')">username</button>
         <button class="write" @click="$router.push('/new-post')">글 작성</button>
     </header>
     <body>
         <div class="comment">
-            <p class="Comment">Comment</p>
-            <input class="writeComment" type="text">
+            <p class="CommentTitle">Comment</p>
+            <input class="writeComment" type="text" placeholder="댓글을 입력하세요">
             <button class="uploadComment" type="submit">GO</button>
         </div>
     </body>
@@ -47,27 +47,27 @@ header {
 .main:hover {
     cursor: pointer;
 }
-.login {
+.username {
     position: relative;
-    right: -1250px;
+    left: 1150px;
     color: #896681;
     background-color: #FFD1DF;
     border: none;
     border-radius: 10px;
-    width: 90px;
+    width: 100px;
     height: 40px;
     box-shadow: rgb(81, 81, 81, 0.3) 2px 3px;
     font-size: large;
     font-weight: 700;
     text-shadow: rgba(125, 125, 125, 0.3) 2px 2px;
 }
-.login:hover {
+.username:hover {
     cursor: pointer;
     background-color: #e1b8c4;
 }
 .write {
     position: relative;
-    left: 1055px;
+    left: 950px;
     background-color: #FFEDFD;
     color: #65505F;
     border: none;
@@ -84,21 +84,21 @@ header {
     background-color: #e2d0e0;
 }
 .comment {
-    position: relative;
-    z-index: 1;
-    left: 1100px;
-    bottom: 150px;
-    width: 400px;
-    height: 610px;
+    position: absolute;
+    left: 1070px;
+    top: 100px;
+    width: 350px;
+    height: 590px;
     background-color: #F8E7EE;
     border-radius: 10px 10px 10px 10px;
     box-shadow: rgba(129, 129, 129, 0.2) 3px 5px 0 0;
 }
-.Comment {
+.CommentTitle {
     position: relative;
-    /* z-index: 1; */
     left: 20px;
-    top: 65px;
+    top: 0px;
+    width: 60px;
+    background-color: #F8E7EE;
     text-align: left;
     font-size: large;
     font-weight: 600;
@@ -107,18 +107,21 @@ header {
 }
 .writeComment {
     position: relative;
-    left: 0px;
-    top: 530px;
-    width: 310px;
+    left: 10px;
+    top: 480px;
+    width: 330px;
     height: 30px;
     border: none;
     border-radius: 10px;
     background-color: white;
 }
+.writeComment:focus {
+    outline: none;
+}
 .uploadComment {
     position: relative;
-    top: 530px;
-    left: 5px;
+    top: 480px;
+    left: 25px;
     width: 60px;
     height: 30px;
     border: none;
@@ -132,7 +135,6 @@ header {
     background-color: #c8b8c4;
 }
 body {
-    padding-top: 75px;
     background-color: #fff1f7;
     overflow: hidden;
 }

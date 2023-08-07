@@ -1,16 +1,18 @@
 <template>
     <div id="post">
     <body>
-        <div class="writeBox">
-            <textarea class="value" placeholder="내용을 입력하세요"></textarea>
-        </div>
-        <div class="upBar">
-            <textarea class="title" placeholder="제목"></textarea>
-        </div>
-        <div class="buttons">
-            <button class="cancel" @click="$router.push('/')">취소</button>
-            <button class="upload" @click="$router.push('/')">게시</button>
-        </div>
+        <form action="/new-post" method="post">
+            <div class="writeBox">
+                <textarea class="PostValue" placeholder="내용을 입력하세요"></textarea>
+            </div>
+            <div class="upBar">
+                <textarea class="PostTitle" placeholder="제목"></textarea>
+            </div>
+            <div class="buttons">
+                <button class="cancelPost" @click="$router.push('/dashboard')">취소</button>
+                <button class="uploadPost" type="submit">게시</button>
+            </div>
+        </form>
     </body>
     </div>
 </template>
@@ -26,15 +28,15 @@ body {
 }
 .upBar {
     position: absolute;
-    top: 80px;
-    left: 280px;
+    top: 70px;
+    left: 265px;
     width: 1000px;
     height: 70px;
     flex-shrink: 0;
     border-radius: 20px 20px 0px 0px;
     background: #F3DFE9;
 }
-.title {
+.PostTitle {
     position: absolute;
     top: 20px;
     left: 10px;
@@ -50,12 +52,12 @@ body {
     font-weight: 600;
     line-height: 30px; /* 125% */
 }
-.title:focus {
+.PostTitle:focus {
     outline: none;
 }
 .writeBox {
-    position: relative;
-    top: 50px;
+    position: absolute;
+    top: 70px;
     left: 265px;
     width: 1000px;
     height: 550px;
@@ -64,14 +66,15 @@ body {
     background-color: #ffffff;
     box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
 }
-.value {
+.PostValue {
     width: 950px;
     height: 400px;
     position: absolute;
-    top: 50px;
+    top: 80px;
     left: 15px;
     border: none;
     resize: none;
+    background-color: white;
     color: #000;
     font-family: Inter;
     font-size: 16px;
@@ -79,14 +82,14 @@ body {
     font-weight: 400;
     line-height: normal;
 }
-.value:focus {
+.PostValue:focus {
     outline: none;
 }
-.cancel {
+.cancelPost {
     position: absolute;
-    bottom: 90px;
-    right: 360px;
-    width: 60px;
+    bottom: 110px;
+    right: 330px;
+    width: 80px;
     height: 30px;
     flex-shrink: 0;
     border: none;
@@ -100,15 +103,15 @@ body {
     font-weight: 500;
     line-height: 30px; /* 187.5% */
 }
-.cancel:hover, .upload:hover {
+.cancelPost:hover, .upload:hover {
     cursor: pointer;
     background-color: #d5c4d0;
 }
-.upload {
+.uploadPost {
     position: absolute;
-    bottom: 90px;
-    right: 290px;
-    width: 60px;
+    bottom: 110px;
+    right: 230px;
+    width: 80px;
     height: 30px;
     flex-shrink: 0;
     border: none;
