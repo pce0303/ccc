@@ -16,8 +16,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
 
   data () {
@@ -26,11 +24,10 @@ export default {
       PostTitle: ''
     }
   },
-
   methods: {
     sendData () {
       // POST 요청 보내기
-      axios
+      this.$http
         .post('/new-post', {
           title: this.PostTitle,
           detail: this.PostValue
@@ -44,7 +41,6 @@ export default {
     }
   }
 }
-
 </script>
 
 <style>
