@@ -1,9 +1,14 @@
 <template>
     <div id="profile">
         <div class="img">
-            <img src="https://pbs.twimg.com/media/EbviXFOU4AUv1sP.jpg" width="270px" height="270px">
+            <!-- <img src="https://pbs.twimg.com/media/EbviXFOU4AUv1sP.jpg" width="270px" height="270px"> -->
+            <form action="upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="profile" accept="image/*">
+                <input type="submit">
+            </form>
         </div>
-        <button class="uploadProfileImg">사진 업로드</button>
+        <!-- <button class="uploadProfileImg">사진 업로드</button> -->
+        <input class="upload" type="file" placeholder="사진 업로드">
         <input class="name" type=text name="ps" placeholder="이름">
         <button class="cancelProfile" @click="goToHome">취소</button>
         <button class="storage" @click="goToHome">저장</button>
