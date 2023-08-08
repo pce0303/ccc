@@ -2,10 +2,10 @@
     <div id="post">
     <body>
         <div class="writeBox">
-            <textarea class="PostValue" placeholder="내용을 입력하세요"></textarea>
+            <textarea class="PostValue" v-model="PostValue" placeholder="내용을 입력하세요"></textarea>
         </div>
         <div class="upBar">
-            <textarea class="PostTitle" placeholder="제목"></textarea>
+            <textarea class="PostTitle" v-model="PostTitle" placeholder="제목"></textarea>
         </div>
         <div class="buttons">
             <button class="cancelPost" @click="$router.push('/dashboard')">취소</button>
@@ -28,7 +28,7 @@ export default {
     sendData () {
       // POST 요청 보내기
       this.$http
-        .post('/new-post', {
+        .post('/api/new-post', {
           title: this.PostTitle,
           detail: this.PostValue
         })

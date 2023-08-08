@@ -20,10 +20,13 @@ connection.connect((err) => {
     console.log('Connected to MySQL database!');
 });
 
-app.post('/new-post', (req, res) => {
+app.post('/api/new-post', (req, res) => {
     const {title, detail} = req.body;
 
-    connection.query('INSERT INTO post_table (title, detail) VALUES (?, ?)', [title, detail], (error, result) => {
+    var author = "choeun";
+
+
+    connection.query('INSERT INTO post_table (title, detail, author) VALUES (?, ?, ?)', [title, detail, author], (error, result) => {
         if (error) {
             throw error;
         }
@@ -33,4 +36,4 @@ app.post('/new-post', (req, res) => {
     });
 });
 
-module.exports = router;
+module.exports = app;
