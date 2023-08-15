@@ -28,9 +28,9 @@ export default {
     sendData () {
       // POST 요청 보내기
       this.$http
-        .post('/api/new-post', {
+        .post('/new-post', {
           title: this.PostTitle,
-          detail: this.PostValue
+          content: this.PostValue
         })
         .then((response) => {
           console.log(response.data)
