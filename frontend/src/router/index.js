@@ -24,6 +24,10 @@ export default new Router({
     {
       path: '/new-post',
       component: post
+    },
+    {
+      path: '/post:id',
+      component: post
     }
 
   ]
