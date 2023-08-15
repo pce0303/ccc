@@ -1,7 +1,7 @@
 <template>
     <div id="home">
     <header>
-        <button class="main" @click="$router.push('/')">COCACO</button>
+        <button class="main" @click="$router.push('/login')">COCACO</button>
         <button class="username" @click="$router.push('/profile')">User Name</button>
         <button class="write" @click="$router.push('/new-post')">글 작성</button>
     </header>
@@ -49,7 +49,7 @@ header {
 }
 .username {
     position: relative;
-    left: 1250px;
+    left: 1400px;
     color: #896681;
     background-color: #FFD1DF;
     border: none;
@@ -67,7 +67,7 @@ header {
 }
 .write {
     position: relative;
-    left: 1050px;
+    left: 1200px;
     background-color: #FFEDFD;
     color: #65505F;
     border: none;
@@ -85,10 +85,10 @@ header {
 }
 .comment {
     position: absolute;
-    left: 1150px;
+    left: 1330px;
     top: 110px;
-    width: 350px;
-    height: 590px;
+    width: 360px;
+    height: 680px;
     background-color: #F8E7EE;
     border-radius: 10px 10px 10px 10px;
     box-shadow: rgba(129, 129, 129, 0.2) 3px 5px 0 0;
@@ -108,7 +108,7 @@ header {
 .writeComment {
     position: relative;
     left: 0px;
-    top: 480px;
+    top: 570px;
     width: 330px;
     height: 30px;
     border: none;
@@ -120,7 +120,7 @@ header {
 }
 .uploadComment {
     position: relative;
-    top: 480px;
+    top: 570px;
     left: 10px;
     width: 60px;
     height: 30px;

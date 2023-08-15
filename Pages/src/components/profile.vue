@@ -2,30 +2,67 @@
     <div id="profile">
         <div class="img">
             <!-- <img src="https://pbs.twimg.com/media/EbviXFOU4AUv1sP.jpg" width="270px" height="270px"> -->
-            <form action="upload" method="post" enctype="multipart/form-data">
-                <input type="file" name="profile" accept="image/*">
-                <input type="submit">
-            </form>
+            
         </div>
         <!-- <button class="upload">사진 업로드</button> -->
-        <input class="upload" type="file" placeholder="사진 업로드">
+        <!-- <input class="upload" type="file" placeholder="사진 업로드"> -->
         
+
+        <div>
+            <input type="file" @change="handleFileChange">
+            <img :src="imagePreview" v-if="imagePreview" alt="미리보기" width="270px" height="270px" />
+            <button @click="uploadImage">프로필로 설정</button>
+        </div>
+
         <input class="name" type=text name="ps" placeholder="이름">
-        <button class="cancel" @click="goToLogin">취소</button>
-        <button class="storage" @click="goToLogin">저장</button>
+        <button class="cancel" @click="goToHome">취소</button>
+        <button class="storage" @click="goToHome">저장</button>
         <div class="bar"></div>
     </div> 
 </template>
 
 <script>
-    export default {
-      methods: {
-        goToLogin() {
-          this.$router.push('/Home')
+export default {
+  data() {
+    return {
+      imageFile: null,
+      imagePreview: null
+    };
+  },
+  methods: {
+    goToHome() {
+            this.$router.push('/Home');
+        },
+    handleFileChange(event) {
+      this.imageFile = event.target.files[0];
+      this.imagePreview = URL.createObjectURL(this.imageFile);
+    },
+    async uploadImage() {
+      if (!this.imageFile) return;
+
+      const formData = new FormData();
+      formData.append('profileImage', this.imageFile);
+
+      try {
+        const response = await fetch('/upload-profile-image', {
+          method: 'POST',
+          body: formData
+        });
+
+        // 서버에서 응답 처리
+        const data = await response.json();
+
+        // 프로필 이미지 설정 처리 (예시)
+        if (data.imageUrl) {
+          // 이미지 설정에 대한 처리 (예: 서버로부터 받은 이미지 경로를 저장)
         }
+      } catch (error) {
+        console.error('이미지 업로드 오류:', error);
       }
     }
-    
+  }
+};
+
   </script>
 
 <style>
@@ -60,12 +97,17 @@
         right: -40px;
     }
 
-    .upload {
+    form {
+        background-color: #ffc2ea;
+    }
+
+    .file, .submit {
         position:relative;
         bottom: 140px;
-        right: -37px; 
+        right: 10px; 
         display: inline-block;
-        padding: 12px 28px;
+        width: 105px;
+        height: 40px;
         font-size: 20px;
         font-weight: bold;
         text-transform: uppercase;
@@ -77,18 +119,18 @@
         transition: all 0.2s ease-in-out;
     }
 
-    .upload:hover {
+    .file:hover, .submit:hover {
         transform: translateY(-2px);
         box-shadow: 0px 5px 0px #965779;
     }
 
-    .upload:active {
+    .file:active, .submit:active {
         transform: translateY(0px);
         box-shadow: none;
         background-image: linear-gradient(to bottom right, #ff64e0, #ffc2ea);
     }
 
-    .upload:before {
+    .file:before, .submit:before {
         top: -3px;
         left: -3px;
         border-radius: 40px;
@@ -96,7 +138,7 @@
         border-left: 3px solid #fff;
     }
 
-    .upload:after {
+    .file:after, .submit:after {
         top: -3px;
         right: -3px;
         border-radius: 40px;
@@ -110,14 +152,13 @@
         font-family: Inter;
         font-weight: 700;
         max-width: 235px;
-        height: 33px;
         position: relative;
         bottom:100px;
         left: 200px;
         overflow: hidden;
         border-radius: 30px;
-        width: 100%;
-        padding: 5px;  
+        width: 200px;
+        height: 40px;  
         border: 1.5px solid lightgrey;
         outline: none;
         transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
@@ -138,7 +179,8 @@
     }
     
     .cancel {
-        padding: 15px 35px;
+        height: 40px;
+        width: 80px;
         border-radius: 50px;
         border: 0;
         background-color: white;
@@ -148,8 +190,8 @@
         font-size: 15px;
         transition: all .5s ease;
         position: relative;
-        bottom: 0px;
-        right:-90px;
+        bottom: -20px;
+        right:-120px;
     }
 
     .cancel:hover {
@@ -165,7 +207,8 @@
     }
 
     .storage {
-        padding: 15px 35px;
+        height: 40px;
+        width: 80px;
         border-radius: 50px;
         border: 0;
         background-color: white;
@@ -177,8 +220,8 @@
         font-weight: 500;
         transition: all .5s ease;
         position: relative;
-        bottom: 0px;
-        right: -95px;
+        bottom: -20px;
+        right: -127px;
     }
 
     .storage:hover {

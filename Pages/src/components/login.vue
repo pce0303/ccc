@@ -2,13 +2,13 @@
 <template>
     <div id="Login">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <div class="welcome">Welcome to<br>COCACO!</div>
+        <div class="welcome">Welcome<br>COCACO!</div>
         <div class="signIn">Sign In</div>
         <div class="signInBackground"></div>
         <div>
-            <input class="ID" type=text name="id" placeholder="ID">
+            <input class="ID" type="text" name="id" placeholder="ID">
             <br><br>
-            <input class="PS" type=text name="ps" placeholder="PassWord">
+            <input class="PS" type="text" name="ps" placeholder="PassWord">
         </div>
         <button class ="signInButton" @click="goToHome">SIGN IN</button>
         <router-view></router-view>
@@ -37,9 +37,9 @@ export default {
         background-color: #FFD4F0;
         border-radius: 10px;
         position: relative;
-        top: 115px;
-        left: 370px;
-        right: 50px;
+        top: 150px;
+        left: 450px;
+        right: 10px;
         filter: drop-shadow(10px 15px 10px rgba(0, 0, 0, 0.25));
     }
 
@@ -149,12 +149,6 @@ export default {
         background-image: linear-gradient(to bottom right, #ff64e0, #ffc2ea);
     }
 
-    .signInButton:before, .signInButton:after {
-        content: "";
-        position: absolute;
-        width:0;
-        height:0;
-    }
 
     .signInButton:before {
         top: -3px;

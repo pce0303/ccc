@@ -57,8 +57,8 @@
 
 .upBar {
     position: absolute;
-    top: 80px;
-    left: 300px;
+    top: 110px;
+    left: 380px;
     width: 1000px;
     height: 70px;
     flex-shrink: 0;
@@ -86,8 +86,8 @@
 }
 .writeBox {
     position: absolute;
-    top: 100px;
-    left: 300px;
+    top: 140px;
+    left: 380px;
     width: 1000px;
     height: 550px;
     flex-shrink: 0;
@@ -119,8 +119,8 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 105px;
-    right: 340px;
+    bottom: 150px;
+    right: 420px;
     height: 30px;
     width:60px;
     border: none;
@@ -143,8 +143,8 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 105px;
-    right: 270px;
+    bottom: 150px;
+    right: 350px;
     height: 30px;
     width: 60px;
     border: none;
@@ -162,8 +162,8 @@
 .heart {
     outline: none;
     position: absolute;
-    bottom: 100px;
-    left: 308px;
+    bottom: 150px;
+    left: 400px;
     padding: 10px 2px;
     border: none;
     border-radius: 50%;
@@ -178,7 +178,7 @@
 .heart.highlight {
   width: 75px;
   height: 75px;
-  left: 308px;
+  left: 400px;
   font-size: 50px;
   background-color: #ffc9df;
 }
@@ -191,8 +191,8 @@
 .fun {
     outline: none;
     position: absolute;
-    bottom: 100px;
-    left: 390px;
+    bottom: 150px;
+    left: 485px;
     padding: 10px 2px;
     border: none;
     border-radius: 50%;
@@ -206,7 +206,7 @@
 .fun.highlight {
   width: 75px;
   height: 75px;
-  left: 390px;
+  left: 485px;
   font-size: 50px;
   background-color: rgb(249, 249, 145);
 }
@@ -218,8 +218,8 @@
 .sad {
     outline: none;
     position: absolute;
-    bottom: 100px;
-    left: 473px;
+    bottom: 150px;
+    left: 570px;
     padding: 10px 2px;
     border: none;
     border-radius: 50%;
@@ -233,7 +233,7 @@
 .sad.highlight {
   width: 75px;
   height: 75px;
-  left: 473px;
+  left: 570px;
   font-size: 50px;
   background-color: rgb(249, 249, 145);
 }
@@ -245,8 +245,8 @@
 .angry {
     outline: none;
     position: absolute;
-    bottom: 100px;
-    left: 560px;
+    bottom: 150px;
+    left: 655px;
     padding: 10px 2px;
     border: none;
     border-radius: 50%;
@@ -260,7 +260,7 @@
 .angry.highlight {
   width: 75px;
   height: 75px;
-  left: 560px;
+  left: 655px;
   font-size: 50px;
   background-color: #ffc9df;
 }
