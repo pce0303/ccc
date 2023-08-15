@@ -6,10 +6,11 @@
         <button class="write" @click="$router.push('/new-post')">글 작성</button>
     </header>
     <body>
-        <form class="comment" action="/home" method="post">
+        <form class="postForm"></form>
+        <form class="comment">
             <p class="CommentTitle">Comment</p>
-            <input class="writeComment" type="text" placeholder="댓글을 입력하세요">
-            <button class="uploadComment" type="submit">GO</button>
+            <input class="writeComment" type="text" v-model="writeComment" placeholder="댓글을 입력하세요">
+            <button class="uploadComment" type="submit" @click="sendData">GO</button>
         </form>
     </body>
     <router-view/>
@@ -18,7 +19,33 @@
 
 <script>
 export default {
+  data () {
+    return {
+      writeComment: ''
+    }
+  },
+  methods: {
+    sendData () {
+      this.$http
+        .post('/home', {
+          content: this.writeComment
+        })
+        .then((response) => {
+          console.log(response.data)
+        })
+        .catch((error) => {
+          console.error('Error:', error.message)
+        })
+    }
+  }
 }
+
+// const postBoxes = document.querySelector('.postForm')
+// const newPost = document.createElement('form')
+// newPost.className = 'postBox'
+// newPost.innerHTML = ``
+// postBoxes.appendChild(newPost)
+
 </script>
 <style>
 header {
