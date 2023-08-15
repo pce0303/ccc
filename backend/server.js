@@ -3,12 +3,14 @@ const app = express();
 
 const path = require('path');
 const postRouter = require('./router/post');
+const commentRouter = require('./router/comment');
 
 app.listen(8080, ()=>{
     console.log('server on port 8080');
 })
 
 app.use('/new-post', postRouter);
+app.use('/home', commentRouter);
 
 app.use( '/', express.static( path.join(__dirname, '../frontend/dist') ));  
 app.get('/', (req, res)=>{
