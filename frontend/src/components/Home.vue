@@ -6,11 +6,11 @@
         <button class="write" @click="$router.push('/new-post')">글 작성</button>
     </header>
     <body>
-        <div class="comment">
+        <form class="comment" action="/home" method="post">
             <p class="CommentTitle">Comment</p>
             <input class="writeComment" type="text" placeholder="댓글을 입력하세요">
             <button class="uploadComment" type="submit">GO</button>
-        </div>
+        </form>
     </body>
     <router-view/>
     </div>

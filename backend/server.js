@@ -1,13 +1,16 @@
 const express = require('express');
 const app = express();
+
 const path = require('path');
-const postRoutes = require('./api/post');
+const postRouter = require('./router/post');
+const commentRouter = require('./router/comment');
 
 app.listen(8080, ()=>{
     console.log('server on port 8080');
 })
 
-app.use('/api', postRoutes);
+app.use('/new-post', postRouter);
+app.use('/home', commentRouter);
 
 app.use( '/', express.static( path.join(__dirname, '../frontend/dist') ));  
 app.get('/', (req, res)=>{
