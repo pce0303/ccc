@@ -2,15 +2,15 @@
 <template>
   <div id="Register">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <div class="join">Join the<br>COCACO!</div>
+      <div class="join">Join the<br><a href="/#/login">COCACO!</a></div>
       <div class="register">Register</div>
       <div class="registerBackground"></div>
       <div>
-          <input class="ID" type="text" name="id" placeholder="ID">
+          <input class="ID" type="text" name="id" v-model="username" placeholder="ID">
           <br><br>
-          <input class="PS" type="text" name="ps" placeholder="PassWord">
+          <input class="PS" type="text" name="ps" v-model="password" placeholder="PassWord">
       </div>
-      <button class ="registerButton" @click="goToLogin">Register</button>
+      <button class ="registerButton" @click="sendData">Register</button>
       <router-view></router-view>
       <div class="container"></div>
   </div>
@@ -18,8 +18,28 @@
 
 <script>
 export default {
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
   methods: {
     goToLogin () {
+      this.$router.push('/login')
+    },
+    sendData () {
+      this.$http
+        .post('/register', {
+          username: this.username,
+          password: this.password
+        })
+        .then((response) => {
+          console.log(response.data)
+        })
+        .catch((error) => {
+          console.error('Error:', error.message)
+        })
       this.$router.push('/login')
     }
   }
