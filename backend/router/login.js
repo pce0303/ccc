@@ -8,7 +8,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 router.post('/', (req, res) => {
     const { username, password } = req.body;
-    const query = 'SELECT * FROM Info WHERE username = ? AND password = ?';
+    const query = 'SELECT * FROM userInfo WHERE username = ? AND password = ?';
     const values = [ username, password ];
 
     db.query(query, values, (error, results, fields)=> {
