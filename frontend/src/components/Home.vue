@@ -6,9 +6,12 @@
         <button class="write" @click="$router.push('/new-post')">글 작성</button>
     </header>
     <body>
-        <form class="postForm"></form>
+        <!-- <form class="postForm"></form> -->
         <form class="comment">
             <p class="CommentTitle">Comment</p>
+            <div v-for="comment in commnets" :key="comment.id">
+                {{ comment.text }}
+            </div>
             <input class="writeComment" type="text" v-model="writeComment" placeholder="댓글을 입력하세요">
             <button class="uploadComment" type="submit" @click="sendData">GO</button>
         </form>
@@ -21,17 +24,20 @@
 export default {
   data () {
     return {
-      writeComment: ''
+      comments: [],
+      newComment: ''
     }
   },
   methods: {
     sendData () {
       this.$http
         .post('/home', {
-          content: this.writeComment
+          content: this.newComment
         })
         .then((response) => {
-          console.log(response.data)
+          const newComment = { id: response.data.id, content: this.newComment }
+          this.comments.push(newComment)
+          this.newComment = ''
         })
         .catch((error) => {
           console.error('Error:', error.message)
