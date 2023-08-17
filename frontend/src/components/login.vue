@@ -6,11 +6,11 @@
         <div class="signIn">Sign In</div>
         <div class="signInBackground"></div>
         <div>
-            <input class="ID" type=text name="id" placeholder="ID">
+            <input class="ID" type=text name="id" v-model="username" placeholder="ID">
             <br><br>
-            <input class="PS" type=text name="ps" placeholder="PassWord">
+            <input class="PS" type=text name="ps" v-model="password" placeholder="PassWord">
         </div>
-        <button class ="signInButton" @click="goToHome">SIGN IN</button>
+        <button class ="signInButton" @click="sendData">SIGN IN</button>
         <router-view></router-view>
         <div class="container"></div>
         <!-- v-on:click="OnClickButton" -->
@@ -20,8 +20,28 @@
 
 <script>
 export default {
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
   methods: {
     goToHome () {
+      this.$router.push('/dashboard')
+    },
+    sendData () {
+      this.$http
+        .post('/login', {
+          username: this.username,
+          password: this.password
+        })
+        .then((response) => {
+          console.log(response.data)
+        })
+        .catch((error) => {
+          console.error('Error:', error.message)
+        })
       this.$router.push('/dashboard')
     }
   }
