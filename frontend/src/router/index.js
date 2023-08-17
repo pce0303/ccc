@@ -21,7 +21,7 @@ export default new Router({
     },
 
     {
-      path: '/Home',
+      path: '/dashboard',
       component: Home
     },
 
