@@ -10,7 +10,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.post('/', (req, res) => {
     const {title, content} = req.body;
     const query = 'INSERT INTO posts (title, content, writer) VALUES (?, ?, ?)';
-    var writer = "choeun"; //작성자는 임시로 설정함 추후에 로그인 정보로 변경
+    var writer = req.session.username;
     const values = [title, content, writer];
 
     db.query(query, values, (error, results, fields) => {

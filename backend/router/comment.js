@@ -9,8 +9,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 //댓글 생성
 router.post('/', (req, res) => {
     const { content } = req.body;
-    const writer = 'choeun' //임시 추후 로그인 정보로 변경
-    const query = 'INSERT INTO comments (content, writer) VALUES (?,?)';
+    var writer = req.session.username;
     const values = [content, writer];
 
     db.query(query, values, (err, results, fields) => {
