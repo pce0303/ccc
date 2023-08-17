@@ -38,7 +38,7 @@ export default {
       border-radius: 10px;
       position: relative;
       top: 150px;
-      left: 450px;
+      left: 400px;
       right: 10px;
       filter: drop-shadow(10px 15px 10px rgba(0, 0, 0, 0.25));
   }
@@ -72,7 +72,7 @@ export default {
       line-height: normal;
       position:relative;
       z-index: 1;
-      left: 475px;
+      left: 500px;
       bottom: 20px;
   }
 
@@ -95,7 +95,7 @@ export default {
       height: 30px;
       position: relative;
       bottom: 390px;
-      left: 300px;
+      left: 480px;
       overflow: hidden;
       border-radius: 10px;
       width: 100%;
@@ -123,7 +123,7 @@ export default {
   .registerButton {
       position:relative;
       bottom: 370px;
-      left: 200px;
+      left: 500px;
       display: inline-block;
       padding: 12px 28px;
       margin: 10px;
