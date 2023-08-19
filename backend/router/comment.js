@@ -7,9 +7,14 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
 router.get('/', (req, res) => {
-    var username = req.session.username
-    res.json(username)
-})
+    db.query('SELECT * FROM comments;', (err, results) => {
+
+        const comments = results;
+        const username = req.session.username;
+
+        res.json({ username, comments });
+    });
+});
 
 //댓글 생성
 router.post('/', (req, res) => {

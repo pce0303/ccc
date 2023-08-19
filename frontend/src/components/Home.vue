@@ -7,16 +7,21 @@
     </header>
     <div>
         <div v-for="post in posts" :key="post.id" class="postItem">
-            <h2>{{ posts.title }}</h2>
-            <p>{{ posts.content }}</p>
-            <p>작성자 : {{ posts.writer }}</p>
+            <h2 class="post_title">{{ post.title }}</h2>
+            <p class="post_content">{{ post.content }}</p>
+            <p class="post_writer">작성자 : {{ post.writer }}</p>
+            <button class="editPost">수정</button>
+            <button class="deletePost">삭제</button>
         </div>
     </div>
     <div class="bg">
         <form class="comment">
             <p class="CommentTitle">Comment</p>
             <div v-for="comment in comments" :key="comment.id" class="commentItem">
-                {{ comment.content }}
+                <p class="comment_writer">{{ comment.writer }}</p>
+                <p class="comment_content">{{ comment.content }}</p>
+                <button class="editComment">수정</button>
+                <button class="deleteComment">삭제</button>
             </div>
             <input class="writeComment" type="text" v-model="writeComment" placeholder="댓글을 입력하세요">
             <button class="uploadComment" type="submit" @click="sendData">GO</button>
@@ -38,10 +43,14 @@ export default {
       username: null
     }
   },
-  mounted () {
+  beforeMount () {
     this.fetchPosts()
-    this.fetchUsername()
+    this.fetchUserData()
   },
+  //   beforeRouteUpdate (to, from, next) {
+  //     this.fetchUsername()
+  //     next()
+  //   },
   methods: {
     sendData () {
       const requestData = {
@@ -69,13 +78,14 @@ export default {
         console.error('Error fetching posts', error)
       }
     },
-    async fetchUsername () {
+    async fetchUserData () {
       try {
         const response = await fetch('/home')
         const data = await response.json()
         this.username = data.username
+        this.comments = data.comments
       } catch (error) {
-        console.error('Error fetching username:', error)
+        console.error('Error fetching user data', error)
       }
     }
   }
@@ -88,6 +98,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
+    width: 100vw;
     height: 75px;
     color: pink;
     background: hsl(324, 33%, 78%);
@@ -168,9 +179,9 @@ header {
     text-shadow: rgb(183, 183, 183, 0.8) 2px 2px;
 }
 .writeComment {
-    position: relative;
+    position: absolute;
     left: 10px;
-    top: 480px;
+    top: 580px;
     width: 330px;
     height: 30px;
     border: none;
@@ -181,9 +192,9 @@ header {
     outline: none;
 }
 .uploadComment {
-    position: relative;
-    top: 480px;
-    left: 25px;
+    position: absolute;
+    top: 580px;
+    left: 200px;
     width: 60px;
     height: 30px;
     border: none;
@@ -202,8 +213,31 @@ header {
 }
 
 .postItem {
+    position: relative;
+    top: 80px;
     margin: 20px 0;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #ffdef9;
+    background-color: white;
+}
+
+.post_title,
+.post_content,
+.post_writer {
+    background-color: white;
+}
+
+.commentItem {
+    position: relative;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ffdef9;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.comment_content,
+.comment_writer {
+    background-color: white;
 }
 </style>
