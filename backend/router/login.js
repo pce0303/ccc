@@ -11,17 +11,17 @@ router.post('/', (req, res) => {
     const query = 'SELECT * FROM userInfo WHERE username = ? AND password = ?';
     const values = [ username, password ];
 
-    db.query(query, values, (error, results, fields)=> {
-        console.log('query worked', results.values);
-        console.log(error);
+    db.query(query, values, (error, results)=> {
+        if(error) console.log(error);
+        console.log('query worked');
 
         if(results.length > 0) {
             req.session.isLoggedIn = true;
             req.session.username = results[0].username;
 
-            res.send('success')
+            res.send("<script>alert('login success!'); location.href='/home';</script>")
         } else {
-            res.send('failure')
+            res.send("<script>alert('login failed!'); location.href='/login';</script>")
         }
     });
 });

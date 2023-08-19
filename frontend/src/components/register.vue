@@ -40,7 +40,6 @@ export default {
         .catch((error) => {
           console.error('Error:', error.message)
         })
-      this.$router.push('/login')
     }
   }
 }
