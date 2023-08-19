@@ -13,7 +13,11 @@ router.post('/', (req, res) => {
     const values = [username, password];
 
     db.query(query1, (err, results) => {
-        if (err) console.log(err);
+        if (err) {
+            console.log(err);
+            res.status(500).json({ success: false, message: 'Server error' });
+            return;
+        }
         else console.log(results);
 
         const count = results[0].count;
@@ -23,11 +27,13 @@ router.post('/', (req, res) => {
                 console.log('userInfo inserted', results);
                 if(err) {
                     console.log(err);
+                    res.status(500).json({ success: false, message: 'Server error' });
+                    return;
                 }
-                res.send('success')
+                res.json({ success: true, message: 'Register successful' });
             });
         } else {
-            res.send('failure')
+            res.json({ success: false, message: 'Invalid credentials' });
         }
     });
 });

@@ -11,12 +11,15 @@
           <input class="PS" type="text" name="ps" v-model="password" placeholder="PassWord">
       </div>
       <button class ="registerButton" @click="sendData">Register</button>
+      <button class ="goLoginButton" @click="$router.push('/login')">or login</button>
       <router-view></router-view>
       <div class="container"></div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data () {
     return {
@@ -25,17 +28,16 @@ export default {
     }
   },
   methods: {
-    // goToLogin () {
-    //   this.$router.push('/login')
-    // },
     sendData () {
-      this.$http
-        .post('/register', {
-          username: this.username,
-          password: this.password
-        })
+      axios.post('/register', {
+        username: this.username,
+        password: this.password
+      })
         .then((response) => {
           console.log(response.data)
+          if (response.data.success) {
+            this.$router.push('/login')
+          }
         })
         .catch((error) => {
           console.error('Error:', error.message)
@@ -137,6 +139,16 @@ export default {
 
   input:focus {
       border: 2px solid grey;
+  }
+
+  .goLoginButton  {
+    position: relative;
+    bottom: 320px;
+    left: 370px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: purple;
   }
 
   .registerButton {
