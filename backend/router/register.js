@@ -13,25 +13,21 @@ router.post('/', (req, res) => {
     const values = [username, password];
 
     db.query(query1, (err, results) => {
-        if (err) {
-            console.log(err);
-            return res.status(500).json({ message: 'Internal Server Error' });
-        }
-        console.log('query1 worked');
+        if (err) console.log(err);
+        else console.log(results);
 
         const count = results[0].count;
 
         if(count === 0) {
             db.query(query2, values, (err, results)=> {
+                console.log('userInfo inserted', results);
                 if(err) {
                     console.log(err);
-                    return res.status(500).json({ message: 'Internal Server Error' });
                 }
-                console.log('query2 worked');
-                return res.status(200).json({ message: 'Registration Successful' });
+                res.send('success')
             });
         } else {
-            return res.status(400).json({ message: 'Username already exists' });
+            res.send('failure')
         }
     });
 });

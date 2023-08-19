@@ -12,18 +12,18 @@ router.post('/', (req, res) => {
     const values = [ username, password ];
 
     db.query(query, values, (error, results)=> {
-        if(error) console.log(error);
-        console.log('query worked');
+        if (error) console.log(error);
+        else console.log(results);
 
         if(results.length > 0) {
             req.session.isLoggedIn = true;
             req.session.username = results[0].username;
 
-            return res.status(200).json({ message : 'Login success' });
+            res.send('success')
         } else {
-            return res.status(400).json({ message : 'Login failed' });
+            res.send('failure')
         }
-    });
+    }); 
 });
 
 module.exports = router;

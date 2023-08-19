@@ -36,15 +36,6 @@ export default {
         })
         .then((response) => {
           console.log(response.data)
-
-          if (response.data.message === 'Registration Successful') {
-            alert('Registration successful! You can now log in.')
-            this.router.push('/login')
-          } else if (response.data.message === 'Username already exists') {
-            alert('Username already exists. Please choose a different username.')
-          } else {
-            alert('An error occurred. Please try again later.')
-          }
         })
         .catch((error) => {
           console.error('Error:', error.message)
