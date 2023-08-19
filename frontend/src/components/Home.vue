@@ -6,6 +6,13 @@
         <button class="write" @click="$router.push('/new-post')">글 작성</button>
     </header>
     <div>
+        <div v-for="post in posts" :key="post.id" class="post">
+            <h2>{{ posts.title }}</h2>
+            <p>{{ posts.content }}</p>
+            <p>작성자 : {{ posts.writer }}</p>
+        </div>
+    </div>
+    <div>
         <form class="comment">
             <p class="CommentTitle">Comment</p>
             <div v-for="comment in comments" :key="comment.id" class="commentItem">
@@ -26,15 +33,18 @@ export default {
   data () {
     return {
       comments: [],
-      writeComment: ''
+      writeComment: '',
+      posts: []
     }
+  },
+  created () {
+    this.fetchPosts()
   },
   methods: {
     sendData () {
       const requestData = {
         content: this.writeComment
       }
-
       axios.post('/home', requestData)
         .then((response) => {
           const newComment = {
@@ -47,6 +57,15 @@ export default {
         .catch((error) => {
           console.error('Error: ' + error.message)
         })
+    },
+    async fetchPosts () {
+      try {
+        const response = await fetch('/new-post')
+        const data = await response.json()
+        this.posts = data
+      } catch (error) {
+        console.error('Error fetching posts', error)
+      }
     }
   }
 }

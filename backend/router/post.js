@@ -13,10 +13,16 @@ router.post('/', (req, res) => {
     var writer = req.session.username;
     const values = [title, content, writer];
 
-    db.query(query, values, (error, results, fields) => {
-        if (error) console.error(error);
-    
-        console.log('Inserted:', results.values);
+    db.query(query, values, (error, results) => {
+        if (error) {
+            console.log(error);
+            res.status(500).json({ success: false, message: 'Server error' });
+        }
+
+        else {
+            console.log(results);
+            res.status(200).json({ success: true, message: 'Post uploaded' });
+        }
     });
 });
 

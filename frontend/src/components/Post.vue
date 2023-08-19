@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
 
   data () {
@@ -26,13 +28,15 @@ export default {
   },
   methods: {
     sendData () {
-      this.$http
-        .post('/new-post', {
-          title: this.PostTitle,
-          content: this.PostValue
-        })
+      axios.post('/new-post', {
+        title: this.PostTitle,
+        content: this.PostValue
+      })
         .then((response) => {
           console.log(response.data)
+          if (response.data.success) {
+            this.$router.push('/home')
+          }
         })
         .catch((error) => {
           console.error('Error:', error.message)
