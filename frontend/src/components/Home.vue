@@ -5,21 +5,23 @@
         <button class="username" @click="$router.push('/profile')">username</button>
         <button class="write" @click="$router.push('/new-post')">글 작성</button>
     </header>
-    <body>
+    <div>
         <form class="comment">
             <p class="CommentTitle">Comment</p>
-            <div v-for="comment in commnets" :key="comment.id">
-                {{ comment.text }}
+            <div v-for="comment in comments" :key="comment.id" class="commentItem">
+                {{ comment.content }}
             </div>
             <input class="writeComment" type="text" v-model="writeComment" placeholder="댓글을 입력하세요">
             <button class="uploadComment" type="submit" @click="sendData">GO</button>
         </form>
-    </body>
+    </div>
     <router-view/>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data () {
     return {
@@ -29,17 +31,21 @@ export default {
   },
   methods: {
     sendData () {
-      this.$http
-        .post('/home', {
-          content: this.writeComment
-        })
+      const requestData = {
+        content: this.writeComment
+      }
+
+      axios.post('/home', requestData)
         .then((response) => {
-          const writeComment = { id: response.data.id, content: this.writeComment }
-          this.comments.push(writeComment)
+          const newComment = {
+            id: response.data.id,
+            content: this.writeComment
+          }
+          this.comments.push(newComment)
           this.writeComment = ''
         })
         .catch((error) => {
-          console.error('Error:', error.message)
+          console.error('Error: ' + error.message)
         })
     }
   }

@@ -10,12 +10,13 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.post('/', (req, res) => {
     const { content } = req.body;
     var writer = req.session.username;
+    const query = 'INSERT INTO comments (content, writer) VALUES (?,?)';
     const values = [content, writer];
 
-    db.query(query, values, (err, results, fields) => {
+    db.query(query, values, (err, results) => {
         if (err) console.error(err);
 
-        console.log('comment uploaded', results.content);
+        console.log('comment uploaded', results);
     });
 });
 
