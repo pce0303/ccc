@@ -1,9 +1,13 @@
 const express = require('express');
+const app = express()
+
+const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
-const app = express();
-
 const path = require('path');
+
+require('dotenv').config();
+
 const postRouter = require('./router/post');
 const commentRouter = require('./router/comment');
 const registerRouter = require('./router/register');
@@ -13,12 +17,17 @@ app.listen(8080, ()=>{
     console.log('server on port 8080');
 })
 
-app.use(
+app.use(cookieParser(process.env.COOKIE_SECRET));
+app.use(    
     session({
-        secret: 'keyboard cat',
+        secret: process.env.COOKIE_SECRET,
         resave: false,
         saveUninitialized: true,
-        store: new FileStore()
+        store: new FileStore(),
+        cookie: {
+            httpOnly: true,
+            secure: false
+        }
     })
 );
 
