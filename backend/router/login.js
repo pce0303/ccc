@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const db = require('../db');
+const session = require('express-session');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -23,7 +24,7 @@ router.post('/', (req, res) => {
             req.session.isLoggedIn = true;
             req.session.username = results[0].username;
 
-            res.json({ success: true, message: 'Login successful' });
+            res.json({ success: true, message: 'Login successful', username: results[0].username });
         } else {
             res.json({ success: false, message: 'Invalid credentials' });
         }

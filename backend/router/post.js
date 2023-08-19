@@ -6,6 +6,12 @@ const bodyParser = require('body-parser');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
+router.get('/', (req, res) => {
+    db.query('SELECT * FROM posts;', (err, results) => {
+        res.send(results)
+    })
+})
+
 //게시물 생성
 router.post('/', (req, res) => {
     const {title, content} = req.body;

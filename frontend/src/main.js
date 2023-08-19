@@ -1,13 +1,16 @@
-import { createApp } from 'vue'
+import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index.js'
 import axios from 'axios'
-import store from './store.js'
 
-const app = createApp(App)
+Vue.prototype.$http = axios
 
-app.use(store)
-app.use(router)
-app.config.globalProperties.$http = axios
+Vue.config.productionTip = false
 
-app.mount('#app')
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  router,
+  components: { App },
+  template: '<App/>'
+})

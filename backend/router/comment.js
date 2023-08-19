@@ -6,6 +6,11 @@ const bodyParser = require('body-parser');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
+router.get('/', (req, res) => {
+    var username = req.session.username
+    res.json(username)
+})
+
 //댓글 생성
 router.post('/', (req, res) => {
     const { content } = req.body;

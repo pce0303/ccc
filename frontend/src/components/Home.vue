@@ -2,17 +2,17 @@
     <div id="home">
     <header>
         <button class="main" @click="$router.push('/')">COCACO</button>
-        <button class="username" @click="$router.push('/profile')">username</button>
+        <button class="username" @click="$router.push('/profile')">{{ username }}</button>
         <button class="write" @click="$router.push('/new-post')">글 작성</button>
     </header>
     <div>
-        <div v-for="post in posts" :key="post.id" class="post">
+        <div v-for="post in posts" :key="post.id" class="postItem">
             <h2>{{ posts.title }}</h2>
             <p>{{ posts.content }}</p>
             <p>작성자 : {{ posts.writer }}</p>
         </div>
     </div>
-    <div>
+    <div class="bg">
         <form class="comment">
             <p class="CommentTitle">Comment</p>
             <div v-for="comment in comments" :key="comment.id" class="commentItem">
@@ -34,11 +34,13 @@ export default {
     return {
       comments: [],
       writeComment: '',
-      posts: []
+      posts: [],
+      username: null
     }
   },
-  created () {
+  mounted () {
     this.fetchPosts()
+    this.fetchUsername()
   },
   methods: {
     sendData () {
@@ -65,6 +67,15 @@ export default {
         this.posts = data
       } catch (error) {
         console.error('Error fetching posts', error)
+      }
+    },
+    async fetchUsername () {
+      try {
+        const response = await fetch('/home')
+        const data = await response.json()
+        this.username = data.username
+      } catch (error) {
+        console.error('Error fetching username:', error)
       }
     }
   }
@@ -185,8 +196,14 @@ header {
     cursor: pointer;
     background-color: #c8b8c4;
 }
-body {
+.bg {
     background-color: #fff1f7;
     overflow: hidden;
+}
+
+.postItem {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
 }
 </style>
