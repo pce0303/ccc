@@ -13,22 +13,20 @@ router.post('/', (req, res) => {
     const values = [username, password];
 
     db.query(query1, (err, results, fields) => {
-        console.log('query1 worked', results);
-        console.log(fields);
+        console.log('query1 worked', fields);
         console.log(err);
         const count = results[0].count;
 
         if(count === 0) {
             db.query(query2, values, (err, results, fields)=> {
-                console.log('query2 worked', results);
-                console.log(fields);
+                console.log('query2 worked');
                 if(err) {
                     console.log(err);
                 }
                 res.send('success')
             });
         } else {
-          res.send('failure')
+            res.send('failure')
         }
     });
 });

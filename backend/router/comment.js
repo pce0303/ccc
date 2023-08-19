@@ -21,27 +21,47 @@ router.post('/', (req, res) => {
 
 //댓글 수정
 router.put('/:id', (req, res) => {
-    const ID = req.params.id;
-    const { content } = req.body;
-    const query = 'UPDATE comments SET content = ? WHERE id = ?';
-    const values = [content, ID];
+    const id = req.params.id; //댓글 아이디 가져오기
+    const writer = req.session.username; //작성자는 로그인 유저네임
+    const { content } = req.body; //댓글 가져오기
+    const values = [ content, id ];
+    const query1 = 'SELECT writer FROM comments WHERE writer = ';
+    const query2 = 'UPDATE comments SET, content = ? WHERE id = ?';
 
-    db.query(query, values, (err, results, fields) => {
-        if (err) console.log(err);
+    db.query(query1, writer, (err, results) => { //작성자와 현재 유저가 동일인물인지 검사
+        if(err) console.log(err);
 
-        console.log('comment updated', results);
+        if(results.length > 0) {
+            db.query(query2, values, (err, results) => { //댓글 수정
+                if(err) console.log(err);
+
+                res.send(results.values);
+            });
+        } else {
+            res.send('this is not your post');
+        }
     });
 });
 
 //댓글 삭제
 router.delete('/:id', (req, res) => {
-    const ID = req.params.id;
-    const query = 'DELETE * FROM comment WHERE id = ?';
+    const id = req.params.id; //댓글 id 가져오기
+    const writer = req.session.username; //작성자는 로그인 유저네임
+    const query1 = 'SELECT writer FROM comments WHERE writer = ';
+    const query2 = 'DELETE * FROM comments WHERE id = ?';
 
-    db.query(query, ID, (err, results, fields) => {
-        if (err) console.error(err);
+    db.query(query1, writer, (err, results) => { //현재 유저가 작성한 글인지 검사
+        if (err) console.log(err);
 
-        console.log('comment deleted', results);
+        if(results.length > 0) {
+            db.query(query2, id, (err, results) => { //댓글 삭제
+                if (err) console.log(err);
+
+                res.send('delete successfully');
+            });
+        } else {
+            res.send('this is not your post');
+        }
     });
 });
 

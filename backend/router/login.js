@@ -12,8 +12,7 @@ router.post('/', (req, res) => {
     const values = [ username, password ];
 
     db.query(query, values, (error, results, fields)=> {
-        console.log('query worked', results);
-        console.log(fields);
+        console.log('query worked', results.values);
         console.log(error);
 
         if(results.length > 0) {
