@@ -12,11 +12,14 @@ app.listen(8080, ()=>{
     console.log('server on port 8080');
 })
 
-app.use(session({
-    secret: 'secret-key',
-    resave: false,
-    saveUninitialized: true
-}));
+app.use(
+    session({
+        secret: 'keyboard cat',
+        resave: false,
+        saveUninitialized: true,
+        store: new FileStore()
+    })
+);
 
 app.use('/new-post', postRouter);
 app.use('/home', commentRouter);
