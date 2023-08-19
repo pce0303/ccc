@@ -6,7 +6,6 @@
         <button class="write" @click="$router.push('/new-post')">글 작성</button>
     </header>
     <body>
-        <!-- <form class="postForm"></form> -->
         <form class="comment">
             <p class="CommentTitle">Comment</p>
             <div v-for="comment in commnets" :key="comment.id">
@@ -25,19 +24,19 @@ export default {
   data () {
     return {
       comments: [],
-      newComment: ''
+      writeComment: ''
     }
   },
   methods: {
     sendData () {
       this.$http
         .post('/home', {
-          content: this.newComment
+          content: this.writeComment
         })
         .then((response) => {
-          const newComment = { id: response.data.id, content: this.newComment }
-          this.comments.push(newComment)
-          this.newComment = ''
+          const writeComment = { id: response.data.id, content: this.writeComment }
+          this.comments.push(writeComment)
+          this.writeComment = ''
         })
         .catch((error) => {
           console.error('Error:', error.message)
@@ -45,12 +44,6 @@ export default {
     }
   }
 }
-
-// const postBoxes = document.querySelector('.postForm')
-// const newPost = document.createElement('form')
-// newPost.className = 'postBox'
-// newPost.innerHTML = ``
-// postBoxes.appendChild(newPost)
 
 </script>
 <style>

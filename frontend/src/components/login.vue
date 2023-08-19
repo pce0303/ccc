@@ -13,8 +13,6 @@
         <button class ="signInButton" @click="sendData">SIGN IN</button>
         <router-view></router-view>
         <div class="container"></div>
-        <!-- v-on:click="OnClickButton" -->
-        <!-- <div v-html="svgContent" class="svg"></div> -->
     </div>
 </template>
 
@@ -27,9 +25,9 @@ export default {
     }
   },
   methods: {
-    goToHome () {
-      this.$router.push('/dashboard')
-    },
+    // goToHome () {
+    //   this.$router.push('/home')
+    // },
     sendData () {
       this.$http
         .post('/login', {
@@ -42,7 +40,7 @@ export default {
         .catch((error) => {
           console.error('Error:', error.message)
         })
-      this.$router.push('/dashboard')
+      this.$router.push('/home')
     }
   }
 }

@@ -2,7 +2,7 @@
 <template>
   <div id="Register">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <div class="join">Join the<br><a href="/#/login">COCACO!</a></div>
+      <div class="join">Join the<br>COCACO!</div>
       <div class="register">Register</div>
       <div class="registerBackground"></div>
       <div>
@@ -25,9 +25,9 @@ export default {
     }
   },
   methods: {
-    goToLogin () {
-      this.$router.push('/login')
-    },
+    // goToLogin () {
+    //   this.$router.push('/login')
+    // },
     sendData () {
       this.$http
         .post('/register', {

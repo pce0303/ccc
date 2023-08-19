@@ -26,7 +26,6 @@ export default {
   },
   methods: {
     sendData () {
-      // POST 요청 보내기
       this.$http
         .post('/new-post', {
           title: this.PostTitle,

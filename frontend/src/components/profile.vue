@@ -2,29 +2,67 @@
     <div id="profile">
         <div class="img">
             <!-- <img src="https://pbs.twimg.com/media/EbviXFOU4AUv1sP.jpg" width="270px" height="270px"> -->
-            <form action="upload" method="post" enctype="multipart/form-data">
-                <input type="file" name="profile" accept="image/*">
-                <input type="submit">
-            </form>
+
         </div>
-        <!-- <button class="uploadProfileImg">사진 업로드</button> -->
-        <input class="upload" type="file" placeholder="사진 업로드">
+        <!-- <button class="upload">사진 업로드</button> -->
+        <!-- <input class="upload" type="file" placeholder="사진 업로드"> -->
+        <div>
+            <input type="file" @change="handleFileChange">
+            <img :src="imagePreview" v-if="imagePreview" alt="미리보기" width="270px" height="270px" />
+            <button @click="uploadImage">프로필로 설정</button>
+        </div>
+
         <input class="name" type=text name="ps" placeholder="이름">
-        <button class="cancelProfile" @click="goToHome">취소</button>
+        <button class="cancel" @click="goToHome">취소</button>
         <button class="storage" @click="goToHome">저장</button>
         <div class="bar"></div>
     </div>
-
 </template>
+
 <script>
 export default {
+  data () {
+    return {
+      imageFile: null,
+      imagePreview: null
+    }
+  },
   methods: {
     goToHome () {
-      this.$router.push('/dashboard')
+      this.$router.push('/Home')
+    },
+    handleFileChange (event) {
+      this.imageFile = event.target.files[0]
+      this.imagePreview = URL.createObjectURL(this.imageFile)
+    },
+    async uploadImage () {
+      if (!this.imageFile) return
+
+      const formData = new FormData()
+      formData.append('profileImage', this.imageFile)
+
+      try {
+        const response = await fetch('/upload-profile-image', {
+          method: 'POST',
+          body: formData
+        })
+
+        // 서버에서 응답 처리
+        const data = await response.json()
+
+        // 프로필 이미지 설정 처리 (예시)
+        if (data.imageUrl) {
+          // 이미지 설정에 대한 처리 (예: 서버로부터 받은 이미지 경로를 저장)
+        }
+      } catch (error) {
+        console.error('이미지 업로드 오류:', error)
+      }
     }
   }
 }
+
 </script>
+
 <style>
 
     * {
@@ -32,16 +70,6 @@ export default {
     }
 
     #profile {
-        /* width:700px;
-        height: 400px;
-        background-clip: padding-box;
-        background-color: #FFD4F0;
-        margin: 200px;
-        border-radius: 50px;
-        position:relative;
-        top: 35px;
-        left: 230px;
-        right: 50px; */
         width: 700px;
         height: 400px;
         background-clip: padding-box;
@@ -65,15 +93,19 @@ export default {
         position: relative;
         top: 70px;
         right: -40px;
-        /* -webkit-text-stroke:2px black; */
-
     }
-    .uploadProfileImg {
+
+    form {
+        background-color: #ffc2ea;
+    }
+
+    .file, .submit {
         position:relative;
         bottom: 140px;
-        left: 350px;
+        right: 10px;
         display: inline-block;
-        padding: 12px 28px;
+        width: 105px;
+        height: 40px;
         font-size: 20px;
         font-weight: bold;
         text-transform: uppercase;
@@ -85,18 +117,18 @@ export default {
         transition: all 0.2s ease-in-out;
     }
 
-    .uploadProfileImg:hover {
+    .file:hover, .submit:hover {
         transform: translateY(-2px);
         box-shadow: 0px 5px 0px #965779;
     }
 
-    .uploadProfileImg:active {
+    .file:active, .submit:active {
         transform: translateY(0px);
         box-shadow: none;
         background-image: linear-gradient(to bottom right, #ff64e0, #ffc2ea);
     }
 
-    .uploadProfileImg:before {
+    .file:before, .submit:before {
         top: -3px;
         left: -3px;
         border-radius: 40px;
@@ -104,7 +136,7 @@ export default {
         border-left: 3px solid #fff;
     }
 
-    .uploadProfileImg:after {
+    .file:after, .submit:after {
         top: -3px;
         right: -3px;
         border-radius: 40px;
@@ -118,14 +150,13 @@ export default {
         font-family: Inter;
         font-weight: 700;
         max-width: 235px;
-        height: 33px;
         position: relative;
-        bottom:60px;
+        bottom:100px;
         left: 200px;
         overflow: hidden;
         border-radius: 30px;
-        width: 100%;
-        padding: 5px;
+        width: 200px;
+        height: 40px;
         border: 1.5px solid lightgrey;
         outline: none;
         transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
@@ -145,8 +176,9 @@ export default {
         border: 2px solid grey;
     }
 
-    .cancelProfile {
-        padding: 15px 35px;
+    .cancel {
+        height: 40px;
+        width: 80px;
         border-radius: 50px;
         border: 0;
         background-color: white;
@@ -156,24 +188,25 @@ export default {
         font-size: 15px;
         transition: all .5s ease;
         position: relative;
-        bottom: -55px;
-        right: 10px;
+        bottom: -20px;
+        right:-120px;
     }
 
-    .cancelProfile:hover {
+    .cancel:hover {
         letter-spacing: 3px;
         background-color: #ff80d97a;
         color:rgb(255, 255, 255);
         box-shadow: rgb(166, 155, 166) 0px 7px 29px 0px;
     }
 
-    .cancelProfile:active {
+    .cancel:active {
         letter-spacing: 3px;
         background-color: #fb4dbe78;
     }
 
     .storage {
-        padding: 15px 35px;
+        height: 40px;
+        width: 80px;
         border-radius: 50px;
         border: 0;
         background-color: white;
@@ -185,8 +218,8 @@ export default {
         font-weight: 500;
         transition: all .5s ease;
         position: relative;
-        bottom: -55px;
-        right: 5px;
+        bottom: -20px;
+        right: -127px;
     }
 
     .storage:hover {
