@@ -36,6 +36,13 @@ export default {
         })
         .then((response) => {
           console.log(response.data)
+
+          if (response.data.message === 'Login success') {
+            alert('Login success')
+            this.router.push('/home')
+          } else if (response.data.message === 'Login failed') {
+            alert('Login failed')
+          }
         })
         .catch((error) => {
           console.error('Error:', error.message)

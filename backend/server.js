@@ -15,7 +15,7 @@ const loginRouter = require('./router/login');
 
 app.listen(8080, ()=>{
     console.log('server on port 8080');
-})
+});
 
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(    
@@ -24,10 +24,10 @@ app.use(
         resave: false,
         saveUninitialized: true,
         store: new FileStore(),
-        cookie: {
-            httpOnly: true,
-            secure: false
-        }
+        // cookie: {
+        //     httpOnly: true,
+        //     secure: false
+        // }
     })
 );
 
@@ -39,4 +39,4 @@ app.use('/login', loginRouter);
 app.use('/', express.static( path.join(__dirname, '../frontend/dist') ));  
 app.get('/', (req, res)=>{
     res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));  
-})
+});

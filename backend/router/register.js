@@ -13,7 +13,10 @@ router.post('/', (req, res) => {
     const values = [username, password];
 
     db.query(query1, (err, results) => {
-        if (err) console.log(err);
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ message: 'Internal Server Error' });
+        }
         console.log('query1 worked');
 
         const count = results[0].count;
@@ -22,12 +25,13 @@ router.post('/', (req, res) => {
             db.query(query2, values, (err, results)=> {
                 if(err) {
                     console.log(err);
+                    return res.status(500).json({ message: 'Internal Server Error' });
                 }
                 console.log('query2 worked');
-                res.send("<script>alert('register success!'); location.href='/login';</script>")
+                return res.status(200).json({ message: 'Registration Successful' });
             });
         } else {
-            res.send("<script>alert('register failed!'); location.href='/register';</script>")
+            return res.status(400).json({ message: 'Username already exists' });
         }
     });
 });

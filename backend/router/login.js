@@ -19,9 +19,9 @@ router.post('/', (req, res) => {
             req.session.isLoggedIn = true;
             req.session.username = results[0].username;
 
-            res.send("<script>alert('login success!'); location.href='/home';</script>")
+            return res.status(200).json({ message : 'Login success' });
         } else {
-            res.send("<script>alert('login failed!'); location.href='/login';</script>")
+            return res.status(400).json({ message : 'Login failed' });
         }
     });
 });
