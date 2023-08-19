@@ -10,22 +10,26 @@
             <h2 class="post_title">{{ post.title }}</h2>
             <p class="post_content">{{ post.content }}</p>
             <p class="post_writer">작성자 : {{ post.writer }}</p>
-            <button class="editPost">수정</button>
-            <button class="deletePost">삭제</button>
+            <button class="editPost" @click="editPost">수정</button>
+            <button class="deletePost" @click="deletePost">삭제</button>
         </div>
     </div>
     <div class="bg">
         <form class="comment">
             <p class="CommentTitle">Comment</p>
-            <div v-for="comment in comments" :key="comment.id" class="commentItem">
+            <div class="commentContainer">
+                <div v-for="comment in comments" :key="comment.id" class="commentItem">
                 <p class="comment_writer">{{ comment.writer }}</p>
                 <p class="comment_content">{{ comment.content }}</p>
-                <button class="editComment">수정</button>
-                <button class="deleteComment">삭제</button>
+                <button class="editComment" @click="editComment">수정</button>
+                <button class="deleteComment" @click="deleteComment">삭제</button>
             </div>
+            </div>
+        </form>
+        <div class="sendComment">
             <input class="writeComment" type="text" v-model="writeComment" placeholder="댓글을 입력하세요">
             <button class="uploadComment" type="submit" @click="sendData">GO</button>
-        </form>
+        </div>
     </div>
     <router-view/>
     </div>
@@ -161,10 +165,16 @@ header {
     left: 1070px;
     top: 100px;
     width: 350px;
-    height: 590px;
+    height: 500px;
+    overflow-y: scroll;
     background-color: #F8E7EE;
-    border-radius: 10px 10px 10px 10px;
-    box-shadow: rgba(129, 129, 129, 0.2) 3px 5px 0 0;
+    border-radius: 10px 10px 0 0;
+    box-shadow: rgba(129, 129, 129, 0.2) 3px 0 0 0;
+}
+.commentContainer {
+    max-height: calc(100% - 60px); /* 댓글 폼 높이 제외 */
+    overflow-y: auto;
+    background-color: #F8E7EE;
 }
 .CommentTitle {
     position: relative;
@@ -178,10 +188,24 @@ header {
     color: #896681;
     text-shadow: rgb(183, 183, 183, 0.8) 2px 2px;
 }
+.sendComment {
+    position: absolute;
+    left: 1070px;
+    top: 600px;
+    width: 330px;
+    height: 50px;
+    background-color: #F8E7EE;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: rgba(110, 110, 110, 0.2) 3px 5px 0 0;
+}
 .writeComment {
     position: absolute;
+    top: 10px;
     left: 10px;
-    top: 580px;
     width: 330px;
     height: 30px;
     border: none;
@@ -193,8 +217,8 @@ header {
 }
 .uploadComment {
     position: absolute;
-    top: 580px;
-    left: 200px;
+    top: 15px;
+    left: 260px;
     width: 60px;
     height: 30px;
     border: none;
@@ -202,6 +226,7 @@ header {
     background-color: #E9D7E4;
     color: #50394B;
     box-shadow: rgb(128, 128, 128, 0.4) 2px 2px;
+    margin-left: 10px;
 }
 .uploadComment:hover {
     cursor: pointer;
@@ -239,5 +264,8 @@ header {
 .comment_content,
 .comment_writer {
     background-color: white;
+}
+button {
+    cursor: pointer;
 }
 </style>
