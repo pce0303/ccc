@@ -12,16 +12,20 @@ router.post('/', (req, res) => {
     const values = [ username, password ];
 
     db.query(query, values, (error, results)=> {
-        if (error) console.log(error);
+        if (error) {
+            console.log(error);
+            res.status(500).json({ success: false, message: 'Server error' });
+            return;
+        }
         else console.log(results);
 
         if(results.length > 0) {
             req.session.isLoggedIn = true;
             req.session.username = results[0].username;
 
-            res.send('success')
+            res.json({ success: true, message: 'Login successful' });
         } else {
-            res.send('failure')
+            res.json({ success: false, message: 'Invalid credentials' });
         }
     }); 
 });

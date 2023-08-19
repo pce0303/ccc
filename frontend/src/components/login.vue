@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data () {
     return {
@@ -27,17 +29,16 @@ export default {
     }
   },
   methods: {
-    // goToHome () {
-    //   this.$router.push('/dashboard')
-    // },
     sendData () {
-      this.$http
-        .post('/login', {
-          username: this.username,
-          password: this.password
-        })
+      axios.post('/login', {
+        username: this.username,
+        password: this.password
+      })
         .then((response) => {
           console.log(response.data)
+          if (response.data.success) {
+            this.$router.push('/home')
+          }
         })
         .catch((error) => {
           console.error('Error:', error.message)
@@ -45,7 +46,6 @@ export default {
     }
   }
 }
-
 </script>
 <style>
     * {
