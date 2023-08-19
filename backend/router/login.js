@@ -23,6 +23,7 @@ router.post('/', (req, res) => {
         if(results.length > 0) {
             req.session.isLoggedIn = true;
             req.session.username = results[0].username;
+            req.session.password = results[0].password;
 
             res.json({ success: true, message: 'Login successful', username: results[0].username });
         } else {
