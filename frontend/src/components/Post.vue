@@ -8,7 +8,7 @@
         </div>
         <div class="buttons">
             <button class="cancelPost" @click="$router.push('/home')">취소</button>
-            <button class="uploadPost" @click="sendData">게시</button>
+            <button class="uploadPost" @click="CreatePost">게시</button>
         </div>
     </div>
 </template>
@@ -25,8 +25,8 @@ export default {
     }
   },
   methods: {
-    sendData () {
-      axios.post('/new-post', {
+    CreatePost () {
+      axios.post('/post', {
         title: this.PostTitle,
         content: this.PostValue
       })

@@ -8,7 +8,7 @@
       <div>
           <input class="ID" type="text" name="id" v-model="username" placeholder="ID">
           <br><br>
-          <input class="PS" type="text" name="ps" v-model="password" placeholder="PassWord">
+          <input class="PS" type="password" name="ps" v-model="password" placeholder="PassWord">
       </div>
       <button class ="registerButton" @click="sendData">Register</button>
       <button class ="goLoginButton" @click="$router.push('/login')">or login</button>

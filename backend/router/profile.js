@@ -20,5 +20,4 @@ router.post('/', upload.single('image'), (req, res) => {
   res.json({ imageUrl: 'image_url_here' });
 });
 
-
 module.exports = router; // 라우터를 모듈로 내보냄

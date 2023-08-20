@@ -27,60 +27,69 @@ router.post('/', (req, res) => {
     });
 });
 
+router.get('/:id', (req, res) => {
+    db.query('SELECT * FROM posts WHERE id = ' + req.params.id, (err, results) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send(err.message);
+        }
+        const post = results
+        res.json(post)
+    })
+})
+
 //게시물 수정
-// router.put('/', (req, res) => {
-//     const id = req.params.id; //게시물 아이디 가져오기
-//     const writer = req.session.username; //작성자는 로그인 유저네임
-//     const { title, content } = req.body; //게시글 가져오기
-//     const values = [ title, content, id ];
-//     const query1 = 'SELECT writer FROM posts WHERE writer = ';
-//     const query2 = 'UPDATE posts SET title = ?, content = ? WHERE id = ?';
+router.put('/:id', (req, res) => {
+    const postId = req.params.id; //게시물 아이디 가져오기
+    const writer = req.session.username; //작성자는 로그인 유저네임
+    const { title, content } = req.body; //게시글 가져오기
+    const values = [ title, content, postId ];
+    const query1 = 'SELECT writer FROM posts WHERE ID = ?';
+    const query2 = 'UPDATE posts SET title = ?, content = ? WHERE ID = ?';
 
-//     db.query(query1, writer, (err, results) => { //현재 유저가 작성한 글인지 검사
-//         if(err) console.log(err);
+    db.query(query1, postId, (err, results) => { //현재 유저가 작성한 글인지 검사
+        if(err) console.log(err);
 
-//         if(results.length > 0) {
-//             db.query(query2, values, (err, results) => { //게시글 수정
-//                 if(err) console.log(err);
+        if(results[0].writer === writer) {
+            db.query(query2, values, (err, results) => { //게시글 수정
+                if(err) console.log(err);
 
-//                 res.send(results.values);
-//             });
-//         } else {
-//             res.send('this is not your post');
-//         }
-//     });
-// });
+                res.send(results);
+            });
+        } else {
+            res.send('this is not your post');
+        }
+    });
+});
 
 //게시물 삭제
-// router.delete('/', (req, res) => {
-//     const postId = req.params.id; //게시물 id 가져오기
-//     const writer = req.session.username; //작성자는 로그인 유저네임
-//     const query1 = 'SELECT writer FROM posts WHERE id = ?';
-//     const query2 = 'DELETE FROM posts WHERE id = ?';
+router.delete('/:id', (req, res) => {
+    const postId = req.params.id; //게시물 id 가져오기
+    const writer = req.session.username; //작성자는 로그인 유저네임
+    const query1 = 'SELECT writer FROM posts WHERE id = ?';
+    const query2 = 'DELETE FROM posts WHERE id = ?';
 
-//     res.json(postId)
+    db.query(query1, [postId], (err, results) => { //현재 유저가 작성한 글인지 검사
+        if (err) {
+            console.log(err);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
 
-//     db.query(query1, [postId], (err, results) => { //현재 유저가 작성한 글인지 검사
-//         if (err) {
-//             console.log(err);
-//             res.status(500).send('Internal Server Error');
-//             return;
-//         }
+        if(results.length > 0 && results[0].writer === writer) {
+            db.query(query2, [postId], (err, results) => { //게시글 삭제
+                if (err) {
+                    console.log(err);
+                    res.status(500).send('Internal Server Error');
+                    return;
+                }
 
-//         if(results.length > 0 && results[0].writer === writer) {
-//             db.query(query2, [postId], (err, results) => { //게시글 삭제
-//                 if (err) {
-//                     console.log(err);
-//                     res.status(500).send('Internal Server Error');
-//                     return;
-//                 }
-
-//                 res.send('Deleted successfully');
-//             });
-//         } else {
-//             res.status(403).send('this is not your post');
-//         }
-//     });
-// });
+                res.send('Deleted successfully');
+            });
+        } else {
+            res.status(403).send('this is not your post');
+        }
+    });
+});
 
 module.exports = router;

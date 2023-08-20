@@ -9,9 +9,9 @@
         <div v-for="post in posts" :key="post.id" class="postItem">
             <h2 class="post_title">{{ post.title }}</h2>
             <p class="post_content">{{ post.content }}</p>
-            <p class="post_writer">작성자 : {{ post.writer }} {{ post.id }}</p>
-            <button class="editPost" @click="gotoDetail(post.id)">수정</button>
-            <button class="deletePost" @click="deletePost">삭제</button>
+            <p class="post_writer">작성자 : {{ post.writer }}</p>
+            <button class="editPost" @click="gotoDetail(post.ID)">수정</button>
+            <button class="deletePost" @click="deletePost(post.ID)">삭제</button>
         </div>
     </div>
     <div class="bg">
@@ -91,6 +91,14 @@ export default {
     },
     gotoDetail (id) {
       this.$router.push('/post/' + id)
+    },
+    async deletePost (id) {
+      try {
+        await axios.delete(`post/${id}`)
+        this.fetchUserData()
+      } catch (error) {
+        console.error('Error deleting post', error)
+      }
     }
   }
 }

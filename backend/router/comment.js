@@ -32,7 +32,6 @@ router.get('/', (req, res) => {
 });
 
 
-
 //댓글 생성
 router.post('/', (req, res) => {
     const { content } = req.body;

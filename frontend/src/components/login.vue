@@ -6,9 +6,9 @@
         <div class="signIn">Sign In</div>
         <div class="signInBackground"></div>
         <div>
-            <input class="ID" type=text name="id" v-model="username" placeholder="ID">
+            <input class="ID" type="text" name="id" v-model="username" placeholder="ID">
             <br><br>
-            <input class="PS" type=text name="ps" v-model="password" placeholder="PassWord">
+            <input class="PS" type="password" name="ps" v-model="password" placeholder="PassWord">
         </div>
         <button class ="signInButton" @click="sendData">SIGN IN</button>
         <router-view></router-view>
