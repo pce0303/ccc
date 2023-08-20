@@ -5,6 +5,7 @@ import login from '@/components/login'
 import profile from '@/components/profile'
 import Home from '@/components/Home'
 import post from '@/components/post'
+import EditPost from '@/components/editPost'
 
 Vue.use(Router)
 
@@ -33,6 +34,12 @@ export default new Router({
     {
       path: '/post',
       component: post
+    },
+
+    {
+      path: '/post/:id',
+      component: EditPost,
+      props: true
     }
 
   ]

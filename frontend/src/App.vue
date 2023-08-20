@@ -10,6 +10,7 @@ import login from './components/login.vue'
 import Post from './components/Post.vue'
 import profile from './components/profile.vue'
 import register from './components/register.vue'
+import editPost from './components/editPost.vue'
 
 export default {
   name: 'App',
@@ -18,7 +19,8 @@ export default {
     login,
     Post,
     profile,
-    register
+    register,
+    editPost
   }
 }
 </script>
