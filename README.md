@@ -1,1 +1,3 @@
-Cotten Candy Community
+# Cotten Candy Community
+
+TeamLog summer vacation project
