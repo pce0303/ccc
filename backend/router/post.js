@@ -6,7 +6,7 @@ const db = require('../db');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
-router.post('/', (req, res) => {
+router.post('/', (req, res) => {z
     const { username, password } = req.body;
     const query = 'SELECT * FROM userInfo WHERE username = ? AND password = ?';
     const values = [ username, password ];
