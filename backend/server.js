@@ -34,7 +34,7 @@ app.use(
     })
 );
 
-app.use('/new-post', postRouter);
+app.use('/post', postRouter);
 app.use('/home', commentRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);

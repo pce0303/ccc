@@ -9,6 +9,7 @@ import Home from './components/Home.vue'
 import login from './components/login.vue'
 import Post from './components/Post.vue'
 import profile from './components/profile.vue'
+import register from './components/register.vue'
 
 export default {
   name: 'App',
@@ -16,7 +17,8 @@ export default {
     Home,
     login,
     Post,
-    profile
+    profile,
+    register
   }
 }
 </script>

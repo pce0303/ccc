@@ -1,44 +1,51 @@
 <template>
-    <div id="post">
-        <div class="writeBox">
-            <textarea class="PostValue" v-model="PostValue" placeholder="내용을 입력하세요"></textarea>
-        </div>
-        <div class="upBar">
-            <textarea class="PostTitle" v-model="PostTitle" placeholder="제목"></textarea>
-        </div>
-        <div class="buttons">
-            <button class="cancelPost" @click="$router.push('/home')">취소</button>
-            <button class="uploadPost" @click="sendData">게시</button>
-        </div>
-    </div>
+  <div id="post">
+      <div class="writeBox">
+          <textarea class="PostValue" v-model="PostValue" placeholder="내용을 입력하세요"></textarea>
+      </div>
+      <div class="upBar">
+          <textarea class="PostTitle" v-model="PostTitle" placeholder="제목"></textarea>
+      </div>
+      <div class="buttons">
+          <button class="cancelPost" @click="$router.push('/home')">취소</button>
+          <button class="uploadPost" @click="sendData">저장</button>
+      </div>
+  </div>
 </template>
 
 <script>
 import axios from 'axios'
 
 export default {
-
+  props: ['id'], // 라우터에서 전달한 동적 매개변수를 받음
   data () {
     return {
-      PostValue: '',
-      PostTitle: ''
+      editedPost: {
+        PostTitle: '',
+        PostValue: ''
+      }
     }
   },
+  beforeMount () {
+    // 게시물 정보를 가져와서 표시
+    this.fetchPost()
+  },
   methods: {
-    sendData () {
-      axios.post('/new-post', {
-        title: this.PostTitle,
-        content: this.PostValue
-      })
-        .then((response) => {
-          console.log(response.data)
-          if (response.data.success) {
-            this.$router.push('/home')
-          }
-        })
-        .catch((error) => {
-          console.error('Error:', error.message)
-        })
+    async fetchPost () {
+      try {
+        const response = await axios.get(`/post/${this.id}`)
+        this.editedPost = response.data
+      } catch (error) {
+        console.error('Error fetching post data', error)
+      }
+    },
+    async updatePost () {
+      try {
+        await axios.put(`/post/${this.id}`, this.editedPost)
+        this.$router.push('/home')
+      } catch (error) {
+        console.error('Error updating post', error)
+      }
     }
   }
 }

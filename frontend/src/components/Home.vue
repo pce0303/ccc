@@ -1,16 +1,16 @@
 <template>
     <div id="home">
     <header>
-        <button class="main" @click="$router.push('/')">COCACO</button>
+        <button class="main" @click="$router.push('/home')">COCACO</button>
         <button class="username" @click="$router.push('/profile')">{{ username }}</button>
-        <button class="write" @click="$router.push('/new-post')">글 작성</button>
+        <button class="write" @click="$router.push('/post')">글 작성</button>
     </header>
     <div>
         <div v-for="post in posts" :key="post.id" class="postItem">
             <h2 class="post_title">{{ post.title }}</h2>
             <p class="post_content">{{ post.content }}</p>
-            <p class="post_writer">작성자 : {{ post.writer }}</p>
-            <button class="editPost" @click="editPost">수정</button>
+            <p class="post_writer">작성자 : {{ post.writer }} {{  post.id }}</p>
+            <button class="editPost" @click="gotoDetail()">수정</button>
             <button class="deletePost" @click="deletePost">삭제</button>
         </div>
     </div>
@@ -51,10 +51,6 @@ export default {
     this.fetchPosts()
     this.fetchUserData()
   },
-  //   beforeRouteUpdate (to, from, next) {
-  //     this.fetchUsername()
-  //     next()
-  //   },
   methods: {
     sendData () {
       const requestData = {
@@ -75,7 +71,7 @@ export default {
     },
     async fetchPosts () {
       try {
-        const response = await fetch('/new-post')
+        const response = await fetch('/home')
         const data = await response.json()
         this.posts = data
       } catch (error) {
@@ -91,10 +87,12 @@ export default {
       } catch (error) {
         console.error('Error fetching user data', error)
       }
+    },
+    gotoDetail (id) {
+      this.$router.push('/post/' + id)
     }
   }
 }
-
 </script>
 <style>
 header {
