@@ -7,7 +7,7 @@ const postRouter = require('./router/post');
 const commentRouter = require('./router/comment');
 const registerRouter = require('./router/register');
 const loginRouter = require('./router/login');
-const uploadimage = require('./router/upload-image');
+const profileRouter = require('./router/profile')
 
 app.listen(8080, ()=>{
     console.log('server on port 8080');
@@ -23,6 +23,7 @@ app.use('/new-post', postRouter);
 app.use('/home', commentRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
+app.use('/profile', profileRouter);
 
 app.use(express.static( path.join(__dirname, '../frontend/dist') ));  
 app.get('*', (req, res)=>{

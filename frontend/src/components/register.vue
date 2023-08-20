@@ -86,7 +86,7 @@ export default {
 
     }
 
-    input {
+    .ID, .PS {
         background-color: #D9D9D9;
         opacity: 0.7;
         font-family: Inter;
@@ -107,16 +107,16 @@ export default {
         box-shadow: 0px 0px 20px -18px;
     }
 
-    input:hover {
+    .ID, .PS:hover {
         border: 2px solid lightgrey;
         box-shadow: 0px 0px 20px -17px;
     }
 
-    input:active {
+    .ID, .PS:active {
         transform: scale(0.95);
     }
 
-    input:focus {
+    .ID, .PS:focus {
         border: 2px solid grey;
     }
 
