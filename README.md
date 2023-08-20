@@ -3,12 +3,12 @@
 TeamLog summer vacation project
 
 
-<div align="center">
+＼＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿／<br>
+　　ｏ<br>
+　　 。<br>
+　　　｡<br>
+　　∧＿∧<br>
+　 (*　･ω･)<br>
+＿(__つ/￣￣￣/_<br>
+　　＼/　　　/<br>
 
-
-뀨？　　 ／￣￣＼<br>
-　　　 ／ 　●・ ＞<br>
-　　 ／　 　ε　 │<br>
-　 ／　　 　●・ ＞<br>
-　(つ＿と＼＿＿／<br>∪　∪<br>
-</div>
