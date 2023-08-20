@@ -7,7 +7,7 @@
     </header>
     <div>
         <div v-for="post in posts" :key="post.id" class="postItem">
-            <h2 class="post_title">{{ post.title }}</h2>
+            <h2 class="post_title"><strong style="background-color: white;">{{ post.title }}</strong></h2>
             <h3 class="post_content">{{ post.content }}</h3>
             <h6 class="post_writer">작성자 : {{ post.writer }}</h6>
             <div id="emotion" style="background-color: white;">
@@ -275,6 +275,7 @@ header {
     padding: 10px;
     width: 40%;
     border: 1px solid #ffdef9;
+    border-radius: 10px;
     background-color: white;
 }
 
@@ -289,7 +290,7 @@ header {
     margin: 10px;
     padding: 10px;
     border: 1px solid #ffdef9;
-    border-radius: 10px;
+    border-radius: 3px;
     background-color: white;
 }
 
@@ -399,7 +400,7 @@ button {
   height: 30px;
 }
 .editPost {
-  margin-left: 50px;
+  margin-left: 450px;
   margin-right: 5px;
 }
 </style>
