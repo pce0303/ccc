@@ -1,6 +1,7 @@
 <template>
   <div class="edit-post-container">
-    <input type="text" class="editPostTitle" v-model="editPostTitle">
+    <h2 text-align="center" class="editSlogan">Edit Your Post</h2>
+    <textarea type="text" class="editPostTitle" v-model="editPostTitle"></textarea>
     <textarea class="editPostContent" v-model="editPostContent"></textarea>
     <div class="button-container">
       <button class="save-button" @click="savePost">저장</button>
@@ -57,32 +58,50 @@ export default {
 
 <style>
 .edit-post-container {
+  position: relative;
+  top: 70px;
+  left: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   background-color: white;
+  width: 70%;
+  border-radius: 20px;
 }
-
+.editSlogan {
+  background-color: white;
+}
 .editPostTitle, .editPostContent {
-  width: 100%;
   padding: 10px;
+  margin-top: 20px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: white;
   color: black;
   resize: none;
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
 }
-
+.editPostContent {
+  margin-top: 100px;
+  width: 80%;
+  height: 200px;
+}
 .editPostTitle {
   position: absolute;
-  top: 50%;
+  top: 20%;
+  width: 77%;
 }
-
+.editPostTitle,
+.editPostContent:focus {
+  outline: none;
+}
 .button-container {
   display: flex;
   gap: 10px;
+  background-color: white;
 }
 
 .save-button, .cancel-button {
@@ -93,12 +112,12 @@ export default {
 }
 
 .save-button {
-  background-color: #3498db;
-  color: white;
+  background-color: #ffcbfc;
+  color: rgb(56, 56, 56);
 }
 
 .cancel-button {
-  background-color: #e74c3c;
-  color: white;
+  background-color: #ffcbfc;
+  color: rgb(56, 56, 56);
 }
 </style>

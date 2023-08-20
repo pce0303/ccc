@@ -8,8 +8,14 @@
     <div>
         <div v-for="post in posts" :key="post.id" class="postItem">
             <h2 class="post_title">{{ post.title }}</h2>
-            <p class="post_content">{{ post.content }}</p>
-            <p class="post_writer">작성자 : {{ post.writer }}</p>
+            <h3 class="post_content">{{ post.content }}</h3>
+            <h6 class="post_writer">작성자 : {{ post.writer }}</h6>
+            <div id="emotion" style="background-color: white;">
+              <button class="heart" @click="HeartHighlight" :class="{'highlight': isHighlighted1 }">💖</button>
+              <button class="fun" @click="FunHighlight" :class="{'highlight': isHighlighted2 }">🤣</button>
+              <button class="angry" @click="SadHighlight" :class="{'highlight': isHighlighted3 }">🤬</button>
+              <button class="sad" @click="AngryHighlight" :class="{'highlight': isHighlighted4 }">😢</button>
+            </div>
             <button class="editPost" @click="gotoDetail(post.ID)">수정</button>
             <button class="deletePost" @click="deletePost(post.ID)">삭제</button>
         </div>
@@ -44,7 +50,11 @@ export default {
       comments: [],
       writeComment: '',
       posts: [],
-      username: null
+      username: null,
+      isHighlighted1: false, // CSS 변경 상태를 저장하는 데이터
+      isHighlighted2: false,
+      isHighlighted3: false,
+      isHighlighted4: false
     }
   },
   beforeMount () {
@@ -99,6 +109,18 @@ export default {
       } catch (error) {
         console.error('Error deleting post', error)
       }
+    },
+    HeartHighlight () {
+      this.isHighlighted1 = !this.isHighlighted1
+    },
+    FunHighlight () {
+      this.isHighlighted2 = !this.isHighlighted2
+    },
+    SadHighlight () {
+      this.isHighlighted3 = !this.isHighlighted3
+    },
+    AngryHighlight () {
+      this.isHighlighted4 = !this.isHighlighted4
     }
   }
 }
@@ -117,6 +139,7 @@ header {
     align-items: center;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    z-index: 100;
 }
 .main {
     position: relative;
@@ -168,7 +191,7 @@ header {
     background-color: #e2d0e0;
 }
 .comment {
-    position: absolute;
+    position: fixed;
     left: 1070px;
     top: 100px;
     width: 350px;
@@ -196,7 +219,7 @@ header {
     text-shadow: rgb(183, 183, 183, 0.8) 2px 2px;
 }
 .sendComment {
-    position: absolute;
+    position: fixed;
     left: 1070px;
     top: 600px;
     width: 330px;
@@ -248,8 +271,9 @@ header {
     position: relative;
     top: 80px;
     margin: 20px 0;
+    margin-left: 20%;
     padding: 10px;
-    width: 200px;
+    width: 40%;
     border: 1px solid #ffdef9;
     background-color: white;
 }
@@ -274,6 +298,108 @@ header {
     background-color: white;
 }
 button {
+    margin-top: 10px;
     cursor: pointer;
+}
+.heart {
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    background: #ffffff;
+    font-size: 20px;
+    font-style: normal;
+    text-align: center;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.heart.highlight {
+  font-size: 25px;
+  background-color: #ffc9df;
+}
+
+.heart.highlight:hover {
+    background-color: rgb(255, 175, 215);
+}
+
+.fun {
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    background: #ffffff;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.fun.highlight {
+  font-size: 25px;
+  background-color: rgb(249, 249, 145);
+}
+
+.fun.highlight:hover {
+  background-color: rgb(244, 244, 53);
+}
+
+.sad {
+    outline: none;
+    position: absolute;
+    border: none;
+    border-radius: 50%;
+    background: #ffffff;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.sad.highlight {
+  font-size: 25px;
+  background-color: rgb(249, 249, 145);
+}
+
+.sad.highlight:hover {
+  background-color: rgb(244, 244, 53);
+}
+
+.angry {
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    background: #ffffff;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.angry.highlight {
+  font-size: 25px;
+  background-color: #ffc9df;
+}
+
+.angry.highlight:hover {
+    background-color: rgb(255, 175, 215);
+}
+
+.heart:hover,.angry:hover {
+    background-color: #ffc9df;
+    transform: scale(120%);
+}
+
+.fun:hover, .sad:hover {
+    background-color: rgb(248, 248, 151);
+    transform: scale(120%);
+}
+.editPost, .deletePost {
+  border: none;
+  border-radius: 10px;
+  background-color: #f3e4ef;
+  height: 30px;
+}
+.editPost {
+  margin-left: 50px;
+  margin-right: 5px;
 }
 </style>
