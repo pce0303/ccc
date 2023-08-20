@@ -8,27 +8,29 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 router.get('/', (req, res) => {
     const response = {};
-    const username = req.session.username
-    response.username = username
+    response.username = req.session.username;
 
-    db.query('SELECT * FROM comments;', (err, results) => {
+    db.query('SELECT * FROM comments;', (err, commentResults) => {
         if (err) {
-            console.error('Error fetching comments', err);
-            return res.status(500).json({ error: 'Error fetching comments' });
+            res.status(500).send(err.message);
+            return;
         }
-        response.comments = results;
-    });
-    db.query('SELECT * FROM posts;', (err, results) => {
-        if (err) {
-            console.error('Error fetching posts', err);
-            return res.status(500).json({ error: 'Error fetching posts' });
-        }
-        response.posts = results;
+        const comments = commentResults;
+        response.comments = comments;
 
-        res.json(response);
+        db.query('SELECT * FROM posts;', (err, postResults) => {
+            if (err) {
+                res.status(500).send(err.message);
+                return;
+            }
+            const posts = postResults;
+            response.posts = posts;
+
+            res.json(response);
+        });
     });
-    
 });
+
 
 
 //댓글 생성

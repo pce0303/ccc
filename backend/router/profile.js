@@ -4,16 +4,12 @@ const multer = require('multer');
 const path = require('path');
 const cors = require('cors');
 
-
-const app = express();
 const upload = multer({ dest: 'uploads/' });
 
+router.use(express.static(path.join(__dirname, 'uploads')));
+router.use(cors());
 
-
-app.use(express.static(path.join(__dirname, 'uploads')));
-app.use(cors());
-
-app.post('/upload-image', upload.single('image'), (req, res) => {
+router.post('/', upload.single('image'), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ message: 'No image file provided' });
   }

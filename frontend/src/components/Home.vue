@@ -9,8 +9,8 @@
         <div v-for="post in posts" :key="post.id" class="postItem">
             <h2 class="post_title">{{ post.title }}</h2>
             <p class="post_content">{{ post.content }}</p>
-            <p class="post_writer">작성자 : {{ post.writer }} {{  post.id }}</p>
-            <button class="editPost" @click="gotoDetail()">수정</button>
+            <p class="post_writer">작성자 : {{ post.writer }} {{ post.id }}</p>
+            <button class="editPost" @click="gotoDetail(post.id)">수정</button>
             <button class="deletePost" @click="deletePost">삭제</button>
         </div>
     </div>
@@ -21,8 +21,8 @@
                 <div v-for="comment in comments" :key="comment.id" class="commentItem">
                 <p class="comment_writer">{{ comment.writer }}</p>
                 <p class="comment_content">{{ comment.content }}</p>
-                <button class="editComment" @click="editComment">수정</button>
-                <button class="deleteComment" @click="deleteComment">삭제</button>
+                <!-- <button class="editComment" @click="editComment">수정</button>
+                <button class="deleteComment" @click="deleteComment">삭제</button> -->
             </div>
             </div>
         </form>
@@ -48,7 +48,7 @@ export default {
     }
   },
   beforeMount () {
-    this.fetchPosts()
+    // this.fetchPosts()
     this.fetchUserData()
   },
   methods: {
@@ -69,21 +69,22 @@ export default {
           console.error('Error: ' + error.message)
         })
     },
-    async fetchPosts () {
-      try {
-        const response = await fetch('/home')
-        const data = await response.json()
-        this.posts = data
-      } catch (error) {
-        console.error('Error fetching posts', error)
-      }
-    },
+    // async fetchPosts () {
+    //   try {
+    //     const response = await fetch('/home')
+    //     const data = await response.json()
+    //     this.posts = data.posts
+    //   } catch (error) {
+    //     console.error('Error fetching posts', error)
+    //   }
+    // },
     async fetchUserData () {
       try {
         const response = await fetch('/home')
         const data = await response.json()
         this.username = data.username
         this.comments = data.comments
+        this.posts = data.posts
       } catch (error) {
         console.error('Error fetching user data', error)
       }
@@ -240,6 +241,7 @@ header {
     top: 80px;
     margin: 20px 0;
     padding: 10px;
+    width: 200px;
     border: 1px solid #ffdef9;
     background-color: white;
 }
